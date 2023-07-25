@@ -82,9 +82,9 @@ export function SearchDialog() {
       <Dialog open={open}>
         <DialogContent className="sm:max-w-[850px] text-black">
           <DialogHeader>
-            <DialogTitle>OpenAI powered doc search</DialogTitle>
+            <DialogTitle>OpenAI powered Next.JS doc search</DialogTitle>
             <DialogDescription>
-              Build your own ChatGPT style search with Next.js, OpenAI & Supabase.
+              Search the documentation with ease.
             </DialogDescription>
             <hr />
             <button className="absolute top-0 right-2 p-2" onClick={() => setOpen(false)}>
@@ -165,6 +165,7 @@ export function SearchDialog() {
               </div>
               <div className="text-xs text-gray-500 dark:text-gray-100">
                 Or try:{' '}
+                <div className={"space-x-2"}>
                 <button
                   type="button"
                   className="px-1.5 py-0.5
@@ -172,10 +173,44 @@ export function SearchDialog() {
                   hover:bg-slate-100 dark:hover:bg-gray-600
                   rounded border border-slate-200 dark:border-slate-600
                   transition-colors"
-                  onClick={(_) => setQuery('What are embeddings?')}
+                  onClick={(_) => setQuery('What is Next.JS?')}
                 >
-                  What are embeddings?
+                  What is Next.JS?
                 </button>
+                <button
+                  type="button"
+                  className="px-1.5 py-0.5
+                  bg-slate-50 dark:bg-gray-500
+                  hover:bg-slate-100 dark:hover:bg-gray-600
+                  rounded border border-slate-200 dark:border-slate-600
+                  transition-colors"
+                  onClick={(_) => setQuery('How to start a server?')}
+                >
+                  How to start a server?
+                </button>
+                <button
+                  type="button"
+                  className="px-1.5 py-0.5
+                  bg-slate-50 dark:bg-gray-500
+                  hover:bg-slate-100 dark:hover:bg-gray-600
+                  rounded border border-slate-200 dark:border-slate-600
+                  transition-colors"
+                  onClick={(_) => setQuery('How to get the URL params?')}
+                >
+                  How to get the URL params?
+                </button>
+                <button
+                  type="button"
+                  className="px-1.5 py-0.5
+                  bg-slate-50 dark:bg-gray-500
+                  hover:bg-slate-100 dark:hover:bg-gray-600
+                  rounded border border-slate-200 dark:border-slate-600
+                  transition-colors"
+                  onClick={(_) => setQuery('Should I use SSR or CSR?')}
+                >
+                  Should I use SSR or CSR?
+                </button>
+                </div>
               </div>
             </div>
             <DialogFooter>
