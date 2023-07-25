@@ -13,6 +13,7 @@ import {
 import { Input } from '@/components/ui/input'
 import { useCompletion } from 'ai/react'
 import { X, Loader, User, Frown, CornerDownLeft, Search, Wand } from 'lucide-react'
+import showdown from 'showdown'
 
 export function SearchDialog() {
   const [open, setOpen] = React.useState(false)
@@ -21,6 +22,9 @@ export function SearchDialog() {
   const { complete, completion, isLoading, error } = useCompletion({
     api: '/api/vector-search',
   })
+
+  const converter = new showdown.Converter()
+
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -116,13 +120,15 @@ export function SearchDialog() {
               )}
 
               {completion && !error ? (
+                <>
                 <div className="flex items-center gap-4 dark:text-white">
                   <span className="bg-green-500 p-2 w-8 h-8 rounded-full text-center flex items-center justify-center">
                     <Wand width={18} className="text-white" />
                   </span>
                   <h3 className="font-semibold">Answer:</h3>
-                  {completion}
+                  <div dangerouslySetInnerHTML={{ __html: converter.makeHtml(completion) }} />
                 </div>
+                </>
               ) : null}
 
               <div className="relative">
@@ -148,7 +154,7 @@ export function SearchDialog() {
                   hover:bg-slate-100 dark:hover:bg-gray-600
                   rounded border border-slate-200 dark:border-slate-600
                   transition-colors"
-                  onClick={(_) => setQuery('What is Next.JSs?')}
+                  onClick={(_) => setQuery('What is Next.JS?')}
                 >
                   What is Next.JS?
                 </button>
