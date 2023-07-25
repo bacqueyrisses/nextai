@@ -13,18 +13,20 @@ import {
 import { Input } from '@/components/ui/input'
 import { useCompletion } from 'ai/react'
 import { X, Loader, User, Frown, CornerDownLeft, Search, Wand } from 'lucide-react'
-import showdown from 'showdown'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+type RouterType = "APP" | "PAGES";
+
+
 
 export function SearchDialog() {
   const [open, setOpen] = React.useState(false)
   const [query, setQuery] = React.useState<string>('')
+  const [routerType, setRouterType] = React.useState<RouterType>("APP")
 
   const { complete, completion, isLoading, error } = useCompletion({
-    api: '/api/vector-search',
+    api: '/api/vector-search', body: { routerType }
   })
-
-  const converter = new showdown.Converter()
-
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -49,8 +51,7 @@ export function SearchDialog() {
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()
-    console.log(query)
-    complete(query)
+    void complete(query)
   }
 
   return (
@@ -81,9 +82,9 @@ export function SearchDialog() {
       <Dialog open={open}>
         <DialogContent className="sm:max-w-[850px] text-black">
           <DialogHeader>
-            <DialogTitle>OpenAI powered Next.JS doc search</DialogTitle>
+            <DialogTitle>OpenAI powered doc search</DialogTitle>
             <DialogDescription>
-              Search through the documentation with ease.
+              Build your own ChatGPT style search with Next.js, OpenAI & Supabase.
             </DialogDescription>
             <hr />
             <button className="absolute top-0 right-2 p-2" onClick={() => setOpen(false)}>
@@ -92,6 +93,16 @@ export function SearchDialog() {
           </DialogHeader>
 
           <form onSubmit={handleSubmit}>
+            <div className={"flex space-x-4"}>
+              <div className="flex items-center space-x-2">
+                <input onChange={()=> setRouterType("APP")} type={"radio"} value="APP" id="r1" checked={routerType === "APP"} />
+                <label htmlFor="r1">App Router</label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <input onChange={()=> setRouterType("PAGES")} type={"radio"} value="PAGES" id="r2" checked={routerType === "PAGES"} />
+                <label htmlFor="r2">Pages Router</label>
+              </div>
+            </div>
             <div className="grid gap-4 py-4 text-slate-700">
               {query && (
                 <div className="flex gap-4">
@@ -126,8 +137,15 @@ export function SearchDialog() {
                     <Wand width={18} className="text-white" />
                   </span>
                   <h3 className="font-semibold">Answer:</h3>
-                  <div dangerouslySetInnerHTML={{ __html: converter.makeHtml(completion) }} />
+
                 </div>
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  linkTarget="_blank"
+                  className="prose dark:prose-dark"
+                >
+                  {completion}
+                </ReactMarkdown>
                 </>
               ) : null}
 
@@ -154,20 +172,9 @@ export function SearchDialog() {
                   hover:bg-slate-100 dark:hover:bg-gray-600
                   rounded border border-slate-200 dark:border-slate-600
                   transition-colors"
-                  onClick={(_) => setQuery('What is Next.JS?')}
+                  onClick={(_) => setQuery('What are embeddings?')}
                 >
-                  What is Next.JS?
-                </button>
-                <button
-                  type="button"
-                  className="px-1.5 py-0.5
-                  bg-slate-50 dark:bg-gray-500
-                  hover:bg-slate-100 dark:hover:bg-gray-600
-                  rounded border border-slate-200 dark:border-slate-600
-                  transition-colors"
-                  onClick={(_) => setQuery('How to start a server?')}
-                >
-                  How to start a server?
+                  What are embeddings?
                 </button>
               </div>
             </div>

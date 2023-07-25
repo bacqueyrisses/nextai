@@ -43,7 +43,7 @@ export default async function handler(req: NextRequest) {
       throw new UserError('Missing request data')
     }
 
-    const { prompt: query } = requestData
+    const { prompt: query, routerType } = requestData
 
     if (!query) {
       throw new UserError('Missing query in request data')
@@ -87,7 +87,7 @@ export default async function handler(req: NextRequest) {
         match_threshold: 0.78,
         match_count: 10,
         min_content_length: 50,
-      }
+      },
     )
 
     if (matchError) {
@@ -110,7 +110,7 @@ export default async function handler(req: NextRequest) {
 
       contextText += `${content.trim()}\n---\n`
     }
-
+    const routerTypePrompt = routerType === 'APP' ? 'Using the App Router, ' : 'Using the Pages Router, '
     const prompt = codeBlock`
       ${oneLine`
         You are a enthusiastic web developer and love to help people! Given the following sections from the Next.JS
@@ -124,7 +124,7 @@ export default async function handler(req: NextRequest) {
       ${contextText}
 
       Question: """
-      ${sanitizedQuery}
+      ${routerTypePrompt + sanitizedQuery}
       """
 
       Answer as markdown (including related code snippets if available):
@@ -163,7 +163,7 @@ export default async function handler(req: NextRequest) {
         {
           status: 400,
           headers: { 'Content-Type': 'application/json' },
-        }
+        },
       )
     } else if (err instanceof ApplicationError) {
       // Print out application errors with their additional data
@@ -181,7 +181,7 @@ export default async function handler(req: NextRequest) {
       {
         status: 500,
         headers: { 'Content-Type': 'application/json' },
-      }
+      },
     )
   }
 }
