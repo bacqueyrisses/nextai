@@ -148,7 +148,7 @@ export function SearchDialog() {
                   hover:bg-slate-100 dark:hover:bg-gray-600
                   rounded border border-slate-200 dark:border-slate-600
                   transition-colors"
-                  onClick={(_) => setQuery('What are embeddings?')}
+                  onClick={(_) => setQuery('What is Next.JSs?')}
                 >
                   What is Next.JS?
                 </button>
@@ -159,7 +159,7 @@ export function SearchDialog() {
                   hover:bg-slate-100 dark:hover:bg-gray-600
                   rounded border border-slate-200 dark:border-slate-600
                   transition-colors"
-                  onClick={(_) => setQuery('What are embeddings?')}
+                  onClick={(_) => setQuery('How to start a server?')}
                 >
                   How to start a server?
                 </button>
