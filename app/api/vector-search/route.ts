@@ -23,7 +23,7 @@ const openai = new OpenAIApi(config)
 
 export const runtime = 'edge'
 
-export default async function handler(req: NextRequest) {
+export async function POST(req: NextRequest) {
   try {
     if (!openAiKey) {
       throw new ApplicationError('Missing environment variable OPENAI_KEY')
