@@ -113,11 +113,10 @@ export default async function handler(req: NextRequest) {
 
     const prompt = codeBlock`
       ${oneLine`
-        You are a very enthusiastic Supabase representative who loves
-        to help people! Given the following sections from the Supabase
+        You are a enthusiastic web developer and love to help people! Given the following sections from the Next.JS
         documentation, answer the question using only that information,
         outputted in markdown format. If you are unsure and the answer
-        is not explicitly written in the documentation, say
+        is not written in the documentation, say
         "Sorry, I don't know how to help with that."
       `}
 
