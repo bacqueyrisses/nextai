@@ -9,7 +9,11 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'grainy': "url('https://phenomenonstudio.com/wp-content/webp-express/webp-images/themes/phenomenon/img/black-bg.png.webp')",
+      }
+    },
   },
   plugins: [],
 }
