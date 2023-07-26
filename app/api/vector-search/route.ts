@@ -52,7 +52,8 @@ export async function POST(req: NextRequest) {
     const supabaseClient = createClient(supabaseUrl, supabaseServiceKey)
 
     // Moderate the content to comply with OpenAI T&C
-    const sanitizedQuery = query.trim()
+    const routerTypePrompt = routerType === 'APP' ? 'Using the App Router, ' : 'Using the Pages Router, '
+    let sanitizedQuery = query.trim()
     const moderationResponse: CreateModerationResponse = await openai
       .createModeration({ input: sanitizedQuery })
       .then((res) => res.json())
@@ -110,7 +111,6 @@ export async function POST(req: NextRequest) {
 
       contextText += `${content.trim()}\n---\n`
     }
-    const routerTypePrompt = routerType === 'APP' ? 'Using the App Router, ' : 'Using the Pages Router, '
     const prompt = codeBlock`
       ${oneLine`
         You are a enthusiastic web developer and love to help people! Given the following sections from the Next.JS
@@ -124,7 +124,7 @@ export async function POST(req: NextRequest) {
       ${contextText}
 
       Question: """
-      ${routerTypePrompt + sanitizedQuery}
+      ${sanitizedQuery}
       """
 
       Answer as markdown (including related code snippets if available):
