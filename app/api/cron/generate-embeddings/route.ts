@@ -29,12 +29,17 @@ type GithubFile = {
 
 const ignoredFiles = ['pages/404.mdx']
 
+
 /**
  * Extracts ES literals from an `estree` `ObjectExpression`
  * into a plain JavaScript object.
  */
-export async function POST(req: NextRequest) {
+export async function GET(req: NextRequest) {
 
+  /**
+   * Extracts ES literals from an `estree` `ObjectExpression`
+   * into a plain JavaScript object.
+   */
   function getObjectFromExpression(node: ObjectExpression) {
     return node.properties.reduce<
       Record<string, string | number | bigint | true | RegExp | undefined>
@@ -197,7 +202,7 @@ export async function POST(req: NextRequest) {
   }
 
   async function walk(dir: string, parentPath?: string): Promise<WalkEntry[]> {
-    const response = await axios.get(`https://api.github.com/repos/vercel/next.js/contents/docs/${dir}`, {
+    const response = await axios.get(`https://api.github.com/repos/vercel/next.js/contents/${dir}`, {
       headers: {
         Accept: 'application/vnd.github.v3+json',
       },
@@ -247,14 +252,14 @@ export async function POST(req: NextRequest) {
     type: 'github' = 'github';
 
     constructor(source: string, public filePath: string, public parentFilePath?: string) {
-      const path = filePath.replace(/^pages/, '').replace(/\.mdx?$/, '');
-      const parentPath = parentFilePath?.replace(/^pages/, '').replace(/\.mdx?$/, '');
+      const path = filePath.replace(/^docs/, '').replace(/\.mdx?$/, '');
+      const parentPath = parentFilePath?.replace(/^docs/, '').replace(/\.mdx?$/, '');
 
       super(source, path, parentPath);
     }
 
     async load() {
-      const response = await axios.get(`https://raw.githubusercontent.com/vercel/next.js/canary/docs/${this.filePath}`);
+      const response = await axios.get(`https://raw.githubusercontent.com/vercel/next.js/canary/${this.filePath}`);
 
       const contents = response.data;
 
@@ -320,7 +325,7 @@ export async function POST(req: NextRequest) {
     }
 
     const embeddingSources: EmbeddingSource[] = [
-      ...(await walk('pages'))
+      ...(await walk('docs'))
         .filter(({ path }) => /\.mdx?$/.test(path))
         .filter(({ path }) => !ignoredFiles.includes(path))
         .map((entry) => new GithubEmbeddingSource('guide', entry.path)),
@@ -516,12 +521,5 @@ export async function POST(req: NextRequest) {
   }
 
   main().catch((err) => console.error(err))
-
-
-
-
-
-
-
 
 }
