@@ -194,7 +194,7 @@ const ignoredFiles = ['pages/404.mdx']
   }
 
   async function walk(dir: string, parentPath?: string): Promise<WalkEntry[]> {
-    const response = await axios.get(`https://api.github.com/repos/vercel/next.js/contents/docs/${dir}`, {
+    const response = await axios.get(`https://api.github.com/repos/vercel/next.js/contents/${dir}`, {
       headers: {
         Accept: 'application/vnd.github.v3+json',
       },
@@ -244,8 +244,8 @@ const ignoredFiles = ['pages/404.mdx']
     type: 'github' = 'github';
 
     constructor(source: string, public filePath: string, public parentFilePath?: string) {
-      const path = filePath.replace(/^pages/, '').replace(/\.mdx?$/, '');
-      const parentPath = parentFilePath?.replace(/^pages/, '').replace(/\.mdx?$/, '');
+      const path = filePath.replace(/^docs/, '').replace(/\.mdx?$/, '');
+      const parentPath = parentFilePath?.replace(/^docs/, '').replace(/\.mdx?$/, '');
 
       super(source, path, parentPath);
     }
@@ -317,7 +317,7 @@ const ignoredFiles = ['pages/404.mdx']
     }
 
     const embeddingSources: EmbeddingSource[] = [
-      ...(await walk('pages'))
+      ...(await walk('docs'))
         .filter(({ path }) => /\.mdx?$/.test(path))
         .filter(({ path }) => !ignoredFiles.includes(path))
         .map((entry) => new GithubEmbeddingSource('guide', entry.path)),
