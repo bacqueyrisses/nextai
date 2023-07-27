@@ -251,7 +251,7 @@ const ignoredFiles = ['pages/404.mdx']
     }
 
     async load() {
-      const response = await axios.get(`https://raw.githubusercontent.com/vercel/next.js/canary/docs/${this.filePath}`);
+      const response = await axios.get(`https://raw.githubusercontent.com/vercel/next.js/canary/${this.filePath}`);
 
       const contents = response.data;
 
