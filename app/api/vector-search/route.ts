@@ -122,6 +122,10 @@ export async function POST(req: NextRequest) {
 
       Context sections:
       ${contextText}
+      - SSR is short for Server Side Rendering
+      - CSR is short for Client Side Rendering
+      
+
 
       Question: """
       ${sanitizedQuery}

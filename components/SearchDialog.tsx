@@ -56,19 +56,19 @@ export function SearchDialog() {
 
   return (
     <>
-<div className={"bg-white rounded-3xl p-10 w-full z-10"}>
+<div className={"w-full"}>
 
           <form onSubmit={handleSubmit}>
-            <div className={"flex space-x-4"}>
-              <div className="flex items-center space-x-2">
-                <input onChange={()=> setRouterType("APP")} type={"radio"} value="APP" id="r1" checked={routerType === "APP"} />
-                <label htmlFor="r1">App Router</label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <input onChange={()=> setRouterType("PAGES")} type={"radio"} value="PAGES" id="r2" checked={routerType === "PAGES"} />
-                <label htmlFor="r2">Pages Router</label>
-              </div>
-            </div>
+            {/*<div className={"flex space-x-4"}>*/}
+            {/*  <div className="flex items-center space-x-2">*/}
+            {/*    <input onChange={()=> setRouterType("APP")} type={"radio"} value="APP" id="r1" checked={routerType === "APP"} />*/}
+            {/*    <label htmlFor="r1">App Router</label>*/}
+            {/*  </div>*/}
+            {/*  <div className="flex items-center space-x-2">*/}
+            {/*    <input onChange={()=> setRouterType("PAGES")} type={"radio"} value="PAGES" id="r2" checked={routerType === "PAGES"} />*/}
+            {/*    <label htmlFor="r2">Pages Router</label>*/}
+            {/*  </div>*/}
+            {/*</div>*/}
             <div className="grid gap-4 py-4 text-slate-700">
               {query && (
                 <div className="flex gap-4">
@@ -115,73 +115,74 @@ export function SearchDialog() {
                 </>
               ) : null}
 
-              <div className="relative">
-                <Input
+              <div className="relative flex justify-between border shadow-lg rounded-xl px-4 py-2 bg-white">
+                <input
                   placeholder="Ask a question..."
                   name="search"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  className="col-span-3"
-                />
+                  className="col-span-3 border-none outline-none "
+                ></input>
                 <CornerDownLeft
                   className={`absolute top-3 right-5 h-4 w-4 text-gray-300 transition-opacity ${
                     query ? 'opacity-100' : 'opacity-0'
                   }`}
                 />
+                <Button type="submit" className="bg-blue-600 border-none">
+                  Ask
+                </Button>
               </div>
-              <div className="text-xs text-gray-500 dark:text-gray-100">
-                Or try:{' '}
-                <div className={"space-x-2"}>
-                <button
-                  type="button"
-                  className="px-1.5 py-0.5
-                  bg-slate-50 dark:bg-gray-500
-                  hover:bg-slate-100 dark:hover:bg-gray-600
-                  rounded border border-slate-200 dark:border-slate-600
-                  transition-colors"
-                  onClick={(_) => setQuery('What is Next.JS?')}
-                >
-                  What is Next.JS?
-                </button>
-                <button
-                  type="button"
-                  className="px-1.5 py-0.5
-                  bg-slate-50 dark:bg-gray-500
-                  hover:bg-slate-100 dark:hover:bg-gray-600
-                  rounded border border-slate-200 dark:border-slate-600
-                  transition-colors"
-                  onClick={(_) => setQuery('How to start a server?')}
-                >
-                  How to start a server?
-                </button>
-                <button
-                  type="button"
-                  className="px-1.5 py-0.5
-                  bg-slate-50 dark:bg-gray-500
-                  hover:bg-slate-100 dark:hover:bg-gray-600
-                  rounded border border-slate-200 dark:border-slate-600
-                  transition-colors"
-                  onClick={(_) => setQuery('How to get the URL params?')}
-                >
-                  How to get the URL params?
-                </button>
-                <button
-                  type="button"
-                  className="px-1.5 py-0.5
-                  bg-slate-50 dark:bg-gray-500
-                  hover:bg-slate-100 dark:hover:bg-gray-600
-                  rounded border border-slate-200 dark:border-slate-600
-                  transition-colors"
-                  onClick={(_) => setQuery('Should I use SSR or CSR?')}
-                >
-                  Should I use SSR or CSR?
-                </button>
-                </div>
-              </div>
+              {/*<div className="text-xs text-gray-500 dark:text-gray-100">*/}
+              {/*  Or try:{' '}*/}
+              {/*  <div className={"space-x-2"}>*/}
+              {/*  <button*/}
+              {/*    type="button"*/}
+              {/*    className="px-1.5 py-0.5*/}
+              {/*    bg-slate-50 dark:bg-gray-500*/}
+              {/*    hover:bg-slate-100 dark:hover:bg-gray-600*/}
+              {/*    rounded border border-slate-200 dark:border-slate-600*/}
+              {/*    transition-colors"*/}
+              {/*    onClick={(_) => setQuery('What is Next.JS?')}*/}
+              {/*  >*/}
+              {/*    What is Next.JS?*/}
+              {/*  </button>*/}
+              {/*  <button*/}
+              {/*    type="button"*/}
+              {/*    className="px-1.5 py-0.5*/}
+              {/*    bg-slate-50 dark:bg-gray-500*/}
+              {/*    hover:bg-slate-100 dark:hover:bg-gray-600*/}
+              {/*    rounded border border-slate-200 dark:border-slate-600*/}
+              {/*    transition-colors"*/}
+              {/*    onClick={(_) => setQuery('How to start a server?')}*/}
+              {/*  >*/}
+              {/*    How to start a server?*/}
+              {/*  </button>*/}
+              {/*  <button*/}
+              {/*    type="button"*/}
+              {/*    className="px-1.5 py-0.5*/}
+              {/*    bg-slate-50 dark:bg-gray-500*/}
+              {/*    hover:bg-slate-100 dark:hover:bg-gray-600*/}
+              {/*    rounded border border-slate-200 dark:border-slate-600*/}
+              {/*    transition-colors"*/}
+              {/*    onClick={(_) => setQuery('How to get the URL params?')}*/}
+              {/*  >*/}
+              {/*    How to get the URL params?*/}
+              {/*  </button>*/}
+              {/*  <button*/}
+              {/*    type="button"*/}
+              {/*    className="px-1.5 py-0.5*/}
+              {/*    bg-slate-50 dark:bg-gray-500*/}
+              {/*    hover:bg-slate-100 dark:hover:bg-gray-600*/}
+              {/*    rounded border border-slate-200 dark:border-slate-600*/}
+              {/*    transition-colors"*/}
+              {/*    onClick={(_) => setQuery('Should I use SSR or CSR?')}*/}
+              {/*  >*/}
+              {/*    Should I use SSR or CSR?*/}
+              {/*  </button>*/}
+              {/*  </div>*/}
+              {/*</div>*/}
             </div>
-              <Button type="submit" className="bg-red-500">
-                Ask
-              </Button>
+
           </form>
 </div>
     </>

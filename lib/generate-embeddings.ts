@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import { createClient } from '@supabase/supabase-js'
 import { createHash } from 'crypto'
 import dotenv from 'dotenv'
@@ -166,9 +167,11 @@ function processMdxForSearch(content: string): ProcessedMdx {
     const heading = firstNode.type === 'heading' ? toString(firstNode) : undefined
     const slug = heading ? slugger.slug(heading) : undefined
 
+    const titleJSX = heading ? `<Fragment>${heading}</Fragment>` : undefined;
+
     return {
       content: toMarkdown(tree),
-      heading,
+      heading: titleJSX,
       slug,
     }
   })
