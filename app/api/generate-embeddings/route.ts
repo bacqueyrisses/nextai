@@ -30,11 +30,6 @@ type GithubFile = {
  * into a plain JavaScript object.
  */
 export async function GET(req: NextRequest) {
-  const accessToken = req.headers.get('authorization')?.split(' ')[1]
-
-  if (accessToken !== process.env.CRON_SECRET) {
-    return new NextResponse('Forbidden', { status: 403 })
-  }
 
   /**
    * Extracts ES literals from an `estree` `ObjectExpression`
@@ -48,6 +43,7 @@ export async function GET(req: NextRequest) {
         return object
       }
 
+      // @ts-ignore
       const key = (property.key.type === 'Identifier' && property.key.name) || undefined
       const value = (property.value.type === 'Literal' && property.value.value) || undefined
 
