@@ -30,6 +30,11 @@ type GithubFile = {
  * into a plain JavaScript object.
  */
 export async function GET(req: NextRequest) {
+  const accessToken = req.headers.get('authorization')?.split(' ')[1]
+
+  if (accessToken !== process.env.CRON_SECRET) {
+    return new NextResponse('Forbidden', { status: 403 })
+  }
 
   /**
    * Extracts ES literals from an `estree` `ObjectExpression`
@@ -276,11 +281,7 @@ export async function GET(req: NextRequest) {
   type EmbeddingSource = GithubEmbeddingSource
 
   async function generateEmbeddings() {
-    const refreshToken = req.headers.get("authorization")?.split(" ")[1]
-
-    let shouldRefresh
-    refreshToken === process.env.CRON_SECRET ? shouldRefresh = true : shouldRefresh = false
-
+    const shouldRefresh = true
     if (
       !process.env.NEXT_PUBLIC_SUPABASE_URL ||
       !process.env.SUPABASE_SERVICE_ROLE_KEY ||
