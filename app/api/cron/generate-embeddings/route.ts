@@ -280,7 +280,7 @@ export async function GET(req: NextRequest) {
   type EmbeddingSource = GithubEmbeddingSource
 
   async function generateEmbeddings() {
-    const argv = await yargs.option('refresh', {
+    const argv = await yargs().option('refresh', {
       alias: 'r',
       description: 'Refresh data',
       type: 'boolean',
