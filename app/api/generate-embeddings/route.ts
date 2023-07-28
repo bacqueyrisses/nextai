@@ -303,11 +303,13 @@ export async function GET(req: NextRequest) {
     if (shouldRefresh) {
       console.log('Refresh flag set, deleting existing data...')
       const { error: deletePageSectionError } = await supabaseClient.from('nods_page_section').delete().gte("id", 0)
+      await supabaseClient.rpc('ALTER SEQUENCE nods_page_id_seq RESTART WITH 1')
       if (deletePageSectionError) {
         throw deletePageSectionError
       }
 
       const { error: deletePageError } = await supabaseClient.from('nods_page').delete().gte("id", 0)
+      await supabaseClient.rpc('ALTER SEQUENCE nods_page_section_id_seq RESTART WITH 1')
       if (deletePageError) {
         throw deletePageError
       }
