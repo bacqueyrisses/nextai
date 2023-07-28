@@ -17,7 +17,6 @@ import { Configuration, OpenAIApi } from 'openai'
 import { u } from 'unist-builder'
 import { filter } from 'unist-util-filter'
 import { inspect } from 'util'
-import yargs from 'yargs'
 
 dotenv.config()
 
@@ -281,13 +280,10 @@ export async function GET(req: NextRequest) {
   type EmbeddingSource = GithubEmbeddingSource
 
   async function generateEmbeddings() {
-    const argv = await yargs().option('refresh', {
-      alias: 'r',
-      description: 'Refresh data',
-      type: 'boolean',
-    }).argv
+    const refreshToken = req.headers.get("authorization")?.split(" ")[1]
 
-    const shouldRefresh = argv.refresh
+    let shouldRefresh
+    refreshToken === process.env.CRON_SECRET ? shouldRefresh = true : shouldRefresh = false
 
     if (
       !process.env.NEXT_PUBLIC_SUPABASE_URL ||

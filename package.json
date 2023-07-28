@@ -7,9 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\"",
-    "embeddings": "tsx lib/generate-nextjs-embeddings.ts",
-    "embeddings:refresh": "tsx lib/generate-embeddings.ts --refresh"
+    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\""
   },
   "prettier": {
     "trailingComma": "es5",
