@@ -1,4 +1,4 @@
-import { NextRequest } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import axios from 'axios'
 import { join } from 'path'
 import { createClient } from '@supabase/supabase-js'
@@ -159,7 +159,7 @@ export async function GET(req: NextRequest) {
           'mdxJsxTextElement',
           'mdxFlowExpression',
           'mdxTextExpression',
-        ].includes(node.type)
+        ].includes(node.type),
     )
 
     if (!mdTree) {
@@ -180,7 +180,7 @@ export async function GET(req: NextRequest) {
       const heading = firstNode.type === 'heading' ? toString(firstNode) : undefined
       const slug = heading ? slugger.slug(heading) : undefined
 
-      const titleJSX = heading ? `<Fragment>${heading}</Fragment>` : undefined;
+      const titleJSX = heading ? `<Fragment>${heading}</Fragment>` : undefined
 
       return {
         content: toMarkdown(tree),
@@ -206,32 +206,32 @@ export async function GET(req: NextRequest) {
       headers: {
         Accept: 'application/vnd.github.v3+json',
       },
-    });
+    })
 
-    const files: GithubFile[] = response.data;
+    const files: GithubFile[] = response.data
     const entries = await Promise.all(
       files.map(async (file) => {
-        const path = join(dir, file.name);
+        const path = join(dir, file.name)
         if (file.type === 'dir' && file.name === '03-pages') {
           // Skip the "03-pages" subdirectory
-          return [];
+          return []
         } else if (file.type === 'dir') {
-          return walk(path, parentPath);
+          return walk(path, parentPath)
         } else if (file.type === 'file' && /\.mdx?$/.test(file.name)) {
           return [
             {
               path: path,
               parentPath,
             },
-          ];
+          ]
         } else {
-          return [];
+          return []
         }
-      })
-    );
+      }),
+    )
 
-    const flattenedFiles = entries.reduce((all, folderContents) => all.concat(folderContents), []);
-    return flattenedFiles.sort((a, b) => a.path.localeCompare(b.path));
+    const flattenedFiles = entries.reduce((all, folderContents) => all.concat(folderContents), [])
+    return flattenedFiles.sort((a, b) => a.path.localeCompare(b.path))
   }
 
   abstract class BaseEmbeddingSource {
@@ -239,7 +239,8 @@ export async function GET(req: NextRequest) {
     meta?: Meta
     sections?: Section[]
 
-    constructor(public source: string, public path: string, public parentPath?: string) {}
+    constructor(public source: string, public path: string, public parentPath?: string) {
+    }
 
     abstract load(): Promise<{
       checksum: string
@@ -249,31 +250,31 @@ export async function GET(req: NextRequest) {
   }
 
   class GithubEmbeddingSource extends BaseEmbeddingSource {
-    type: 'github' = 'github';
+    type: 'github' = 'github'
 
     constructor(source: string, public filePath: string, public parentFilePath?: string) {
-      const path = filePath.replace(/^docs/, '').replace(/\.mdx?$/, '');
-      const parentPath = parentFilePath?.replace(/^docs/, '').replace(/\.mdx?$/, '');
+      const path = filePath.replace(/^docs/, '').replace(/\.mdx?$/, '')
+      const parentPath = parentFilePath?.replace(/^docs/, '').replace(/\.mdx?$/, '')
 
-      super(source, path, parentPath);
+      super(source, path, parentPath)
     }
 
     async load() {
-      const response = await axios.get(`https://raw.githubusercontent.com/vercel/next.js/canary/${this.filePath}`);
+      const response = await axios.get(`https://raw.githubusercontent.com/vercel/next.js/canary/${this.filePath}`)
 
-      const contents = response.data;
+      const contents = response.data
 
-      const { checksum, meta, sections } = processMdxForSearch(contents);
+      const { checksum, meta, sections } = processMdxForSearch(contents)
 
-      this.checksum = checksum;
-      this.meta = meta;
-      this.sections = sections;
+      this.checksum = checksum
+      this.meta = meta
+      this.sections = sections
 
       return {
         checksum,
         meta,
         sections,
-      };
+      }
     }
   }
 
@@ -294,7 +295,7 @@ export async function GET(req: NextRequest) {
       !process.env.OPENAI_KEY
     ) {
       return console.log(
-        'Environment variables NEXT_PUBLIC_SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, and OPENAI_KEY are required: skipping embeddings generation'
+        'Environment variables NEXT_PUBLIC_SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, and OPENAI_KEY are required: skipping embeddings generation',
       )
     }
 
@@ -306,22 +307,22 @@ export async function GET(req: NextRequest) {
           persistSession: false,
           autoRefreshToken: false,
         },
-      }
+      },
     )
 
     if (shouldRefresh) {
-      console.log('Refresh flag set, deleting existing data...');
-      const { error: deletePageSectionError } = await supabaseClient.from('nods_page_section').delete();
+      console.log('Refresh flag set, deleting existing data...')
+      const { error: deletePageSectionError } = await supabaseClient.from('nods_page_section').delete()
       if (deletePageSectionError) {
-        throw deletePageSectionError;
+        throw deletePageSectionError
       }
 
-      const { error: deletePageError } = await supabaseClient.from('nods_page').delete();
+      const { error: deletePageError } = await supabaseClient.from('nods_page').delete()
       if (deletePageError) {
-        throw deletePageError;
+        throw deletePageError
       }
     } else {
-      console.log('Checking which pages are new or have changed');
+      console.log('Checking which pages are new or have changed')
     }
 
     const embeddingSources: EmbeddingSource[] = [
@@ -394,7 +395,7 @@ export async function GET(req: NextRequest) {
         if (existingPage) {
           if (!shouldRefresh) {
             console.log(
-              `[${path}] Docs have changed, removing old page sections and their embeddings`
+              `[${path}] Docs have changed, removing old page sections and their embeddings`,
             )
           } else {
             console.log(`[${path}] Refresh flag set, removing old page sections and their embeddings`)
@@ -434,7 +435,7 @@ export async function GET(req: NextRequest) {
               meta,
               parent_page_id: parentPage?.id,
             },
-            { onConflict: 'path' }
+            { onConflict: 'path' },
           )
           .select()
           .limit(1)
@@ -488,8 +489,8 @@ export async function GET(req: NextRequest) {
             console.error(
               `Failed to generate embeddings for '${path}' page section starting with '${input.slice(
                 0,
-                40
-              )}...'`
+                40,
+              )}...'`,
             )
 
             throw err
@@ -507,7 +508,7 @@ export async function GET(req: NextRequest) {
         }
       } catch (err) {
         console.error(
-          `Page '${path}' or one/multiple of its page sections failed to store properly. Page has been marked with null checksum to indicate that it needs to be re-generated.`
+          `Page '${path}' or one/multiple of its page sections failed to store properly. Page has been marked with null checksum to indicate that it needs to be re-generated.`,
         )
         console.error(err)
       }
@@ -520,6 +521,13 @@ export async function GET(req: NextRequest) {
     await generateEmbeddings()
   }
 
-  main().catch((err) => console.error(err))
+  try {
+    await main()
+    return new NextResponse('Embeddings generated successfully.')
+
+  } catch (error) {
+    console.log(error)
+    return new NextResponse('Embeddings generation failed.')
+  }
 
 }
