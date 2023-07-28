@@ -201,6 +201,7 @@ export async function GET(req: NextRequest) {
     const response = await axios.get(`https://api.github.com/repos/vercel/next.js/contents/${dir}`, {
       headers: {
         Accept: 'application/vnd.github.v3+json',
+        Authorization: "Bearer" + process.env.GITHUB_TOKEN
       },
     })
 
@@ -303,13 +304,13 @@ export async function GET(req: NextRequest) {
     if (shouldRefresh) {
       console.log('Refresh flag set, deleting existing data...')
       const { error: deletePageSectionError } = await supabaseClient.from('nods_page_section').delete().gte("id", 0)
-      await supabaseClient.rpc('ALTER SEQUENCE nods_page_id_seq RESTART WITH 1')
+      await supabaseClient.rpc('ALTER SEQUENCE nods_page_section_id_seq RESTART WITH 1')
       if (deletePageSectionError) {
         throw deletePageSectionError
       }
 
       const { error: deletePageError } = await supabaseClient.from('nods_page').delete().gte("id", 0)
-      await supabaseClient.rpc('ALTER SEQUENCE nods_page_section_id_seq RESTART WITH 1')
+      await supabaseClient.rpc('ALTER SEQUENCE nods_page_id_seq RESTART WITH 1')
       if (deletePageError) {
         throw deletePageError
       }
