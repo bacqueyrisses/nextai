@@ -8,6 +8,7 @@ const nextConfig = {
         loader: 'ignore-loader',
       })
     }
+    return config
   },
 
 }
