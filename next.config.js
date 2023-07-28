@@ -2,12 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   webpack: (config, { isServer }) => {
-    if (!isServer) {
       config.module.rules.push({
-        test: /api\/.*/,
+        test: /\/api\/.*/,
         loader: 'ignore-loader',
       })
-    }
     return config
   },
 
