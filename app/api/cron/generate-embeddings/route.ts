@@ -25,10 +25,6 @@ type GithubFile = {
   name: string;
 };
 
-
-const ignoredFiles = ['pages/404.mdx']
-
-
 /**
  * Extracts ES literals from an `estree` `ObjectExpression`
  * into a plain JavaScript object.
@@ -324,7 +320,6 @@ export async function GET(req: NextRequest) {
     const embeddingSources: EmbeddingSource[] = [
       ...(await walk('docs'))
         .filter(({ path }) => /\.mdx?$/.test(path))
-        .filter(({ path }) => !ignoredFiles.includes(path))
         .map((entry) => new GithubEmbeddingSource('guide', entry.path)),
     ]
 
