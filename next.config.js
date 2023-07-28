@@ -4,7 +4,7 @@ const nextConfig = {
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.module.rules.push({
-        test: /YOUR FOLDER NAME\/.*/,
+        test: /api\/.*/,
         loader: 'ignore-loader',
       })
     }

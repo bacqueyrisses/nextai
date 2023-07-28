@@ -278,7 +278,7 @@ export async function GET(req: NextRequest) {
   type EmbeddingSource = GithubEmbeddingSource
 
   async function generateEmbeddings() {
-    const shouldRefresh = true
+    const shouldRefresh = false
 
     if (
       !process.env.NEXT_PUBLIC_SUPABASE_URL ||
