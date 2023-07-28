@@ -201,7 +201,7 @@ export async function GET(req: NextRequest) {
     const response = await axios.get(`https://api.github.com/repos/vercel/next.js/contents/${dir}`, {
       headers: {
         Accept: 'application/vnd.github.v3+json',
-        Authorization: "Bearer" + process.env.GITHUB_TOKEN
+        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`
       },
     })
 
