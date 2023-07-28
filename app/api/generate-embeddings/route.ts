@@ -176,7 +176,7 @@ export async function GET(req: NextRequest) {
       const heading = firstNode.type === 'heading' ? toString(firstNode) : undefined
       const slug = heading ? slugger.slug(heading) : undefined
 
-      const titleJSX = heading ? `<Fragment>${heading}</Fragment>` : undefined
+      const titleJSX = heading ? [{ type: 'jsx', value: `<Fragment>${heading}</Fragment>` }] : undefined;
 
       return {
         content: toMarkdown(tree),
