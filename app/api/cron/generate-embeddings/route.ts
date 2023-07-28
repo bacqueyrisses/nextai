@@ -282,6 +282,7 @@ export async function GET(req: NextRequest) {
 
   async function generateEmbeddings() {
     const shouldRefresh = true
+
     if (
       !process.env.NEXT_PUBLIC_SUPABASE_URL ||
       !process.env.SUPABASE_SERVICE_ROLE_KEY ||
@@ -305,12 +306,12 @@ export async function GET(req: NextRequest) {
 
     if (shouldRefresh) {
       console.log('Refresh flag set, deleting existing data...')
-      const { error: deletePageSectionError } = await supabaseClient.from('nods_page_section').delete()
+      const { error: deletePageSectionError } = await supabaseClient.from('nods_page_section').delete().gte("id", 0)
       if (deletePageSectionError) {
         throw deletePageSectionError
       }
 
-      const { error: deletePageError } = await supabaseClient.from('nods_page').delete()
+      const { error: deletePageError } = await supabaseClient.from('nods_page').delete().gte("id", 0)
       if (deletePageError) {
         throw deletePageError
       }
