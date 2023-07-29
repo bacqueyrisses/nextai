@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "embeddings": "tsx lib/generate-embeddings.ts",
     "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\""
   },
   "prettier": {

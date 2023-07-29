@@ -113,7 +113,7 @@ export async function POST(req: NextRequest) {
     }
     const prompt = codeBlock`
       ${oneLine`
-        You are a enthusiastic web developer and love to help people! Given the following sections from the Next.JS
+        You are an enthusiastic Next.JS web developer and love to help people! Given the following sections from the Next.JS
         documentation, answer the question using only that information,
         outputted in markdown format. If you are unsure and the answer
         is not written in the documentation, say
@@ -124,6 +124,8 @@ export async function POST(req: NextRequest) {
       ${contextText}
       - SSR is short for Server Side Rendering
       - CSR is short for Client Side Rendering
+      - SSC is short for Server Side Component
+      - CSC is short for Client Side Component
       
 
 
