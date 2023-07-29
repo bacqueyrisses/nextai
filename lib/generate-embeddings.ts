@@ -1,4 +1,3 @@
-import { Fragment } from 'react'
 import axios from 'axios'
 import { join } from 'path'
 import { createClient } from '@supabase/supabase-js'
@@ -17,8 +16,6 @@ import { Configuration, OpenAIApi } from 'openai'
 import { u } from 'unist-builder'
 import { filter } from 'unist-util-filter'
 import { inspect } from 'util'
-import yargs from 'yargs'
-
 
 dotenv.config()
 
@@ -273,13 +270,8 @@ class GithubEmbeddingSource extends BaseEmbeddingSource {
 type EmbeddingSource = GithubEmbeddingSource
 
 async function generateEmbeddings() {
-  const argv = await yargs.option('refresh', {
-    alias: 'r',
-    description: 'Refresh data',
-    type: 'boolean',
-  }).argv
 
-  const shouldRefresh = argv.refresh
+  const shouldRefresh = false
 
   if (
     !process.env.NEXT_PUBLIC_SUPABASE_URL ||
