@@ -31,7 +31,6 @@ export function SearchDialog() {
   const { complete, completion, isLoading, error } = useCompletion({
     api: '/api/vector-search', body: { routerType }
   })
-
   const inputRef = useRef<HTMLInputElement>(null)
 
 

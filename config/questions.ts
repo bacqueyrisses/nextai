@@ -17,6 +17,6 @@ export const questions: Question[] = [
   },
   {
     id: 4,
-    description: "Should I use SSR or CSR?"
+      description: "How to revalidate data?"
   },
 ]

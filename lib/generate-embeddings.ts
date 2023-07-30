@@ -128,6 +128,7 @@ type ProcessedMdx = {
  * and splits it into sub-sections based on criteria.
  */
 function processMdxForSearch(content: string): ProcessedMdx {
+  console.log(content)
   if (content) content = content.replace(/(title:\s*)<([^>]+)>/g, '$1$2')
 
   const checksum = createHash('sha256').update(content).digest('base64')

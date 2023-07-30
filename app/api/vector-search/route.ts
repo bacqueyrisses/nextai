@@ -118,17 +118,10 @@ export async function POST(req: NextRequest) {
         outputted in markdown format and id possible, give examples. If you are unsure and the answer
         is not written in the documentation, say
         "Sorry, I don't know how to help with that." 
-        If "Who is Enzo" is asked, answer this: "Enzo is a great developer! Find more about him here: www.bacqueyrisses.dev".
       `}
 
       Context sections:
       ${contextText}
-      - SSR is short for Server Side Rendering
-      - CSR is short for Client Side Rendering
-      - SSC is short for Server Side Component
-      - CSC is short for Client Side Component
-      
-
 
       Question: """
       ${sanitizedQuery}
