@@ -18,6 +18,7 @@ import remarkGfm from 'remark-gfm'
 import AISearch from '@/components/AISearch'
 import { CircleDotDashed } from 'lucide'
 import { questions } from '@/config/questions'
+import { useRef } from 'react'
 type RouterType = "APP" | "PAGES";
 
 
@@ -31,29 +32,12 @@ export function SearchDialog() {
     api: '/api/vector-search', body: { routerType }
   })
 
-  React.useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (e.key === 'k' && e.metaKey) {
-        setOpen(true)
-      }
+  const inputRef = useRef(null)
 
-      if (e.key === 'Escape') {
-        console.log('esc')
-        handleModalToggle()
-      }
-    }
-
-    document.addEventListener('keydown', down)
-    return () => document.removeEventListener('keydown', down)
-  }, [])
-
-  function handleModalToggle() {
-    setOpen(!open)
-    setQuery('')
-  }
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()
+    if (!query) return inputRef.current?.focus()
     void complete(query)
   }
 
@@ -78,6 +62,7 @@ export function SearchDialog() {
                 <input
                   placeholder="Ask a question about Next.JS..."
                   name="search"
+                  ref={inputRef}
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   className="border-none outline-none w-2/3 visited:bg-white"

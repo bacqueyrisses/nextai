@@ -19,8 +19,4 @@ export const questions: Question[] = [
     id: 4,
     description: "Should I use SSR or CSR?"
   },
-  {
-    id: 5,
-    description: "What is Next.JS?"
-  },
 ]
