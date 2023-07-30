@@ -37,7 +37,7 @@
     "github-slugger": "^2.0.0",
     "gpt3-tokenizer": "^1.1.5",
     "lucide": "^0.263.0",
-    "lucide-react": "^0.128.0",
+    "lucide-react": "^0.263.1",
     "md-block": "^0.0.1",
     "mdast": "^3.0.0",
     "mdast-util-from-markdown": "^1.2.0",

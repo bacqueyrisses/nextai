@@ -17,7 +17,7 @@ import json from 'react-syntax-highlighter/dist/cjs/languages/hljs/json'
 import kotlin from 'react-syntax-highlighter/dist/cjs/languages/hljs/kotlin'
 
 import { useState } from 'react'
-import { ArrowDown01, ArrowUpRight } from 'lucide'
+import { Copy, CopyCheck } from 'lucide-react'
 // import { useTheme } from 'common/Providers'
 
 export interface CodeBlockProps {
@@ -151,8 +151,7 @@ export const CodeBlock = ({
                   // icon={copied ? <ArrowDown01 /> : <ArrowUpRight />}
                   onClick={() => handleCopy()}
                 >
-                  Copy
-                  {copied ? 'Copied' : ''}
+                  {copied ? <CopyCheck size={15} /> : <Copy size={15} />}
                 </button>
               </CopyToClipboard>
             </div>

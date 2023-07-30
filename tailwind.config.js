@@ -12,6 +12,9 @@ module.exports = {
     extend: {
       backgroundImage: {
         'grainy': "url('https://phenomenonstudio.com/wp-content/webp-express/webp-images/themes/phenomenon/img/black-bg.png.webp')",
+      },
+      animation: {
+        'spin-slow': 'spin 2.3s linear infinite',
       }
     },
   },

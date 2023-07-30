@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-code {
-    background: #ffeff0;
-    word-wrap: break-word;
-    box-decoration-break: clone;
-    padding: .1rem .3rem .2rem;
-    border-radius: .2rem;
-}
+/*code {*/
+/*    background: #ffeff0;*/
+/*    word-wrap: break-word;*/
+/*    box-decoration-break: clone;*/
+/*    padding: .1rem .3rem .2rem;*/
+/*    border-radius: .2rem;*/
+/*}*/
