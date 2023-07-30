@@ -32,7 +32,7 @@ export function SearchDialog() {
     api: '/api/vector-search', body: { routerType }
   })
 
-  const inputRef = useRef(null)
+  const inputRef = useRef<HTMLInputElement>(null)
 
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
@@ -46,16 +46,6 @@ export function SearchDialog() {
 <div className={"sm:w-1/2 w-full overflow-y-auto"}>
 
           <form onSubmit={handleSubmit}>
-            {/*<div className={"flex space-x-4"}>*/}
-            {/*  <div className="flex items-center space-x-2">*/}
-            {/*    <input onChange={()=> setRouterType("APP")} type={"radio"} value="APP" id="r1" checked={routerType === "APP"} />*/}
-            {/*    <label htmlFor="r1">App Router</label>*/}
-            {/*  </div>*/}
-            {/*  <div className="flex items-center space-x-2">*/}
-            {/*    <input onChange={()=> setRouterType("PAGES")} type={"radio"} value="PAGES" id="r2" checked={routerType === "PAGES"} />*/}
-            {/*    <label htmlFor="r2">Pages Router</label>*/}
-            {/*  </div>*/}
-            {/*</div>*/}
             <div className="grid gap-6 py-4 text-slate-700">
               <div className={"space-y-2"}>
               <div className="relative flex justify-between border rounded-2xl pl-6 pr-4 py-2 bg-white focus:bg-white">
@@ -111,20 +101,6 @@ export function SearchDialog() {
               {completion && !error ? (
                 <>
                   <AISearch message={completion}/>
-                {/*<div className="flex items-center gap-4 dark:text-white">*/}
-                {/*  <span className="bg-green-500 p-2 w-8 h-8 rounded-full text-center flex items-center justify-center">*/}
-                {/*    <Wand width={18} className="text-white" />*/}
-                {/*  </span>*/}
-                {/*  <h3 className="font-semibold">Answer:</h3>*/}
-
-                {/*</div>*/}
-                {/*<ReactMarkdown*/}
-                {/*  remarkPlugins={[remarkGfm]}*/}
-                {/*  linkTarget="_blank"*/}
-                {/*  className="prose dark:prose-dark"*/}
-                {/*>*/}
-                {/*  {completion}*/}
-                {/*</ReactMarkdown>*/}
                 </>
               ) : null}
 

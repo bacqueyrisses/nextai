@@ -13,7 +13,7 @@ export const questions: Question[] = [
   },
   {
     id: 3,
-    description: "How to get the URL params?"
+    description: "How to create a POST endpoint?"
   },
   {
     id: 4,
