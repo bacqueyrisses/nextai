@@ -1,5 +1,3 @@
-'use client'
-
 import remarkGfm from 'remark-gfm'
 import ReactMarkdown from 'react-markdown'
 import { markdownComponents } from '@/components/ui/components/markdown'
@@ -12,7 +10,7 @@ interface AISearchI {
 
 export default function AISearch({ message }: AISearchI) {
   return (
-    <div key={12} className='px-4 [overflow-anchor:none] mb-6'>
+    <div key={12} className='[overflow-anchor:none] mb-6'>
       <div className='flex gap-6 [overflow-anchor:none] mb-6'>
         {/*<AiIconChat />*/}
         <>

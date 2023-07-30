@@ -43,22 +43,22 @@ export function SearchDialog() {
 
   return (
     <>
-<div className={"sm:w-1/2 w-full overflow-y-auto"}>
+<div className={"sm:w-2/3 w-full overflow-y-auto"}>
 
           <form onSubmit={handleSubmit}>
-            <div className="grid gap-6 py-4 text-slate-700">
-              <div className={"space-y-2"}>
-              <div className="relative flex justify-between border rounded-2xl pl-6 pr-4 py-2 bg-white focus:bg-white">
+            <div className="space-y-10 py-4 text-slate-700">
+              <div className={"space-y-4"}>
+              <div className="relative flex justify-between border rounded-2xl pl-6 pr-4 py-2 bg-white focus:bg-white mx-auto w-2/3">
                 <input
                   placeholder="Ask a question about Next.JS..."
                   name="search"
                   ref={inputRef}
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  className="border-none outline-none w-2/3 visited:bg-white"
+                  className="border-none outline-none flex-grow visited:bg-white"
                 ></input>
-                <Button type="submit" className="bg-emerald-500 border-none rounded-2xl">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className={`${isLoading && "animate-spin-slow"} lucide lucide-circle-dashed`}><path d="M10.1 2.18a9.93 9.93 0 0 1 3.8 0"/><path d="M17.6 3.71a9.95 9.95 0 0 1 2.69 2.7"/><path d="M21.82 10.1a9.93 9.93 0 0 1 0 3.8"/><path d="M20.29 17.6a9.95 9.95 0 0 1-2.7 2.69"/><path d="M13.9 21.82a9.94 9.94 0 0 1-3.8 0"/><path d="M6.4 20.29a9.95 9.95 0 0 1-2.69-2.7"/><path d="M2.18 13.9a9.93 9.93 0 0 1 0-3.8"/><path d="M3.71 6.4a9.95 9.95 0 0 1 2.7-2.69"/></svg>                </Button>
+                <button type="submit" className="bg-emerald-500 border-none outline-none rounded-2xl hover:bg-emerald-600 px-4 py-2 text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className={`${isLoading && "animate-spin-slow"} lucide lucide-circle-dashed`}><path d="M10.1 2.18a9.93 9.93 0 0 1 3.8 0"/><path d="M17.6 3.71a9.95 9.95 0 0 1 2.69 2.7"/><path d="M21.82 10.1a9.93 9.93 0 0 1 0 3.8"/><path d="M20.29 17.6a9.95 9.95 0 0 1-2.7 2.69"/><path d="M13.9 21.82a9.94 9.94 0 0 1-3.8 0"/><path d="M6.4 20.29a9.95 9.95 0 0 1-2.69-2.7"/><path d="M2.18 13.9a9.93 9.93 0 0 1 0-3.8"/><path d="M3.71 6.4a9.95 9.95 0 0 1 2.7-2.69"/></svg>                </button>
               </div>
 
               <div className="text-xs text-gray-500 dark:text-gray-100 flex items-center justify-center">
@@ -81,7 +81,7 @@ export function SearchDialog() {
               </div>
               </div>
 
-
+              <div className={"space-y-5 px-4"}>
               {error && (
                 <div className="flex items-center gap-4">
                   <span className="bg-red-100 p-2 w-8 h-8 rounded-full text-center flex items-center justify-center">
@@ -92,7 +92,7 @@ export function SearchDialog() {
                   </span>
                 </div>
               )}
-              <div className={`${query ? "visible" : "invisible"} flex gap-6 px-4`}>
+              <div className={`${query ? "visible" : "invisible"} flex gap-6`}>
                       <span className={`bg-slate-100 dark:bg-slate-300 p-2 w-8 h-8 rounded-full text-center flex items-center justify-center`}>
                         <User width={18} />{' '}
                       </span>
@@ -104,6 +104,7 @@ export function SearchDialog() {
                 </>
               ) : null}
 
+            </div>
             </div>
 
           </form>
