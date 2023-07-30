@@ -14,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-    <body className={"min-h-screen flex flex-col justify-between"}>{children}</body>
+    <body className={"min-h-screen flex flex-col justify-between px-4 sm:px-0"}>{children}</body>
     </html>
   )
 }

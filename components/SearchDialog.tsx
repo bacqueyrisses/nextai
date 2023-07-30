@@ -58,7 +58,7 @@ export function SearchDialog() {
 
   return (
     <>
-<div className={"w-1/2 overflow-y-auto"}>
+<div className={"sm:w-1/2 w-full overflow-y-auto"}>
 
           <form onSubmit={handleSubmit}>
             {/*<div className={"flex space-x-4"}>*/}

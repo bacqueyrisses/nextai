@@ -19,8 +19,8 @@ export default function Home() {
     <>
       <Header/>
       <main className={"flex flex-grow flex-col items-center gap-10 justify-between"}>
-        <section className={"flex flex-col items-center w-2/3"}>
-          <div className={"text-3xl font-bold"}>
+        <section className={"flex flex-col items-center w-full sm:w-2/3"}>
+          <div className={"sm:text-3xl text-xl font-bold"}>
             The AI powered Next.JS Doc Search
           </div>
           <SearchDialog />
