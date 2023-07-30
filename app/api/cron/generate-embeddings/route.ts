@@ -202,6 +202,9 @@ export async function GET(req: NextRequest) {
       headers: {
         Accept: 'application/vnd.github.v3+json',
         Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache',
+        'Expires': '0',
       },
     });
 

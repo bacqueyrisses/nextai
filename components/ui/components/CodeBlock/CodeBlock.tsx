@@ -46,7 +46,8 @@ export const CodeBlock = ({
 
   const [copied, setCopied] = useState(false)
 
-  const handleCopy = () => {
+  const handleCopy = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault()
     setCopied(true)
     setTimeout(() => {
       setCopied(false)
@@ -148,10 +149,9 @@ export const CodeBlock = ({
               <CopyToClipboard text={value || children}>
                 <button
                   // type="default"
-                  // icon={copied ? <ArrowDown01 /> : <ArrowUpRight />}
-                  onClick={() => handleCopy()}
+                  onClick={(e) => handleCopy(e)}
                 >
-                  {copied ? <CopyCheck size={15} /> : <Copy size={15} />}
+                  {copied ? <CopyCheck className={"text-white"} size={15} /> : <Copy className={"text-stone-400 hover:text-stone-200"} size={15} />}
                 </button>
               </CopyToClipboard>
             </div>
