@@ -117,7 +117,8 @@ export async function POST(req: NextRequest) {
         documentation, answer the question using only that information,
         outputted in markdown format. If you are unsure and the answer
         is not written in the documentation, say
-        "Sorry, I don't know how to help with that."
+        "Sorry, I don't know how to help with that." 
+        If "Who is Enzo" is asked, answer this: "Enzo is a great developer! Find more about him here: www.bacqueyrisses.dev".
       `}
 
       Context sections:

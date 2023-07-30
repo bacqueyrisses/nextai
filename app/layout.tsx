@@ -14,7 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-    <body className={"bg-[#F1F4F5] min-h-screen px-40 py-10 flex flex-col justify-between"}>{children}</body>
+    <body className={"min-h-full flex flex-col justify-between"}>{children}</body>
     </html>
   )
 }
+
+//bg-[#F1F4F5]
