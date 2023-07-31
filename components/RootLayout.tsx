@@ -1,41 +1,44 @@
 'use client'
 
-import {
-    useEffect,
-    useId,
-    useRef,
-    useState,
-} from 'react'
+import {useId, useRef, useState} from 'react'
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
-import clsx from 'clsx'
 import {motion, MotionConfig, useReducedMotion} from 'framer-motion'
 
 import {Container} from '@/components/Container'
 import {GridPattern} from '@/components/GridPattern'
-import Image from "next/image";
+import Image from 'next/image'
 
 function Header() {
     return (
         <Container>
             <div className="flex items-center justify-between">
-                <Link
-                    href="/"
-                    aria-label="Home"
-                >
-                    <Image src={"/images/logo.webp"} alt={"logo NextAI"} width={50} height={50}/>
+                <Link href="/" aria-label="Home">
+                    <Image
+                        src={'/images/logo.webp'}
+                        alt={'logo NextAI'}
+                        width={50}
+                        height={50}
+                    />
                 </Link>
                 <div className="flex items-center gap-x-8">
-                    <a className="inline-flex rounded-full px-4 py-1.5 text-sm font-semibold transition bg-neutral-950 text-white hover:bg-neutral-800"
-                       href="https://nextjs.org/docs" rel={"noreferrer"} target={"_blank"}><span
-                        className="relative top-px">Next.JS Docs</span></a>
+                    <a
+                        className="inline-flex rounded-full bg-neutral-950 px-4 py-1.5 text-sm font-semibold text-white transition hover:bg-neutral-800"
+                        href="https://nextjs.org/docs"
+                        rel={'noreferrer'}
+                        target={'_blank'}
+                    >
+                        <span className="relative top-px">Next.JS Docs</span>
+                    </a>
                 </div>
             </div>
         </Container>
     )
 }
 
-function RootLayoutInner({children}) {
+function RootLayoutInner({children}: {
+    children: React.ReactNode
+}) {
     let panelId = useId()
     let [expanded, setExpanded] = useState(false)
     let openRef = useRef()
@@ -43,38 +46,14 @@ function RootLayoutInner({children}) {
     let navRef = useRef()
     let shouldReduceMotion = useReducedMotion()
 
-    useEffect(() => {
-        function onClick(event) {
-            if (event.target.closest('a')?.href === window.location.href) {
-                setExpanded(false)
-            }
-        }
-
-        window.addEventListener('click', onClick)
-
-        return () => {
-            window.removeEventListener('click', onClick)
-        }
-    }, [])
-
     return (
         <MotionConfig transition={shouldReduceMotion ? {duration: 0} : undefined}>
             <header>
                 <div
                     className="absolute left-0 right-0 top-2 z-40 pt-14"
-                    aria-hidden={expanded ? 'true' : undefined}
-                    inert={expanded ? '' : undefined}
                 >
                     <Header
-                        panelId={panelId}
-                        toggleRef={openRef}
-                        expanded={expanded}
-                        onToggle={() => {
-                            setExpanded((expanded) => !expanded)
-                            window.setTimeout(() =>
-                                closeRef.current?.focus({preventScroll: true})
-                            )
-                        }}
+
                     />
                 </div>
 
@@ -84,21 +63,11 @@ function RootLayoutInner({children}) {
                     style={{height: expanded ? 'auto' : '0.5rem'}}
                     className="relative z-50 overflow-hidden bg-neutral-950 pt-2"
                     aria-hidden={expanded ? undefined : 'true'}
-                    inert={expanded ? undefined : ''}
                 >
                     <motion.div layout className="bg-neutral-800">
-                        <div ref={navRef} className="bg-neutral-950 pb-16 pt-14">
+                        <div className="bg-neutral-950 pb-16 pt-14">
                             <Header
-                                invert
-                                panelId={panelId}
-                                toggleRef={closeRef}
-                                expanded={expanded}
-                                onToggle={() => {
-                                    setExpanded((expanded) => !expanded)
-                                    window.setTimeout(() =>
-                                        openRef.current?.focus({preventScroll: true})
-                                    )
-                                }}
+
                             />
                         </div>
                         <div
@@ -133,16 +102,13 @@ function RootLayoutInner({children}) {
                     />
 
                     <main className="w-full flex-auto">{children}</main>
-
                 </motion.div>
             </motion.div>
         </MotionConfig>
     )
 }
 
-export function RootLayout({children}) {
+export function RootLayout({children}: { children: React.ReactNode }) {
     let pathname = usePathname()
-    return (
-        <RootLayoutInner key={pathname}>{children}</RootLayoutInner>
-    )
+    return <RootLayoutInner key={pathname}>{children}</RootLayoutInner>
 }

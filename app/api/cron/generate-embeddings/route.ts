@@ -21,16 +21,15 @@ import { inspect } from 'util'
 dotenv.config()
 
 type GithubFile = {
-  type: 'file' | 'dir';
-  name: string;
-};
+  type: 'file' | 'dir'
+  name: string
+}
 
 /**
  * Extracts ES literals from an `estree` `ObjectExpression`
  * into a plain JavaScript object.
  */
 export async function GET(req: NextRequest) {
-
   /**
    * Extracts ES literals from an `estree` `ObjectExpression`
    * into a plain JavaScript object.
@@ -43,8 +42,10 @@ export async function GET(req: NextRequest) {
         return object
       }
 
-      const key = (property.key.type === 'Identifier' && property.key.name) || undefined
-      const value = (property.value.type === 'Literal' && property.value.value) || undefined
+      const key =
+        (property.key.type === 'Identifier' && property.key.name) || undefined
+      const value =
+        (property.value.type === 'Literal' && property.value.value) || undefined
 
       if (!key) {
         return object
@@ -68,7 +69,8 @@ export async function GET(req: NextRequest) {
         node.type === 'mdxjsEsm' &&
         node.data?.estree?.body[0]?.type === 'ExportNamedDeclaration' &&
         node.data.estree.body[0].declaration?.type === 'VariableDeclaration' &&
-        node.data.estree.body[0].declaration.declarations[0]?.id.type === 'Identifier' &&
+        node.data.estree.body[0].declaration.declarations[0]?.id.type ===
+          'Identifier' &&
         node.data.estree.body[0].declaration.declarations[0].id.name === 'meta'
       )
     })
@@ -78,12 +80,16 @@ export async function GET(req: NextRequest) {
     }
 
     const objectExpression =
-      (metaExportNode.data?.estree?.body[0]?.type === 'ExportNamedDeclaration' &&
-        metaExportNode.data.estree.body[0].declaration?.type === 'VariableDeclaration' &&
-        metaExportNode.data.estree.body[0].declaration.declarations[0]?.id.type === 'Identifier' &&
-        metaExportNode.data.estree.body[0].declaration.declarations[0].id.name === 'meta' &&
-        metaExportNode.data.estree.body[0].declaration.declarations[0].init?.type ===
-        'ObjectExpression' &&
+      (metaExportNode.data?.estree?.body[0]?.type ===
+        'ExportNamedDeclaration' &&
+        metaExportNode.data.estree.body[0].declaration?.type ===
+          'VariableDeclaration' &&
+        metaExportNode.data.estree.body[0].declaration.declarations[0]?.id
+          .type === 'Identifier' &&
+        metaExportNode.data.estree.body[0].declaration.declarations[0].id
+          .name === 'meta' &&
+        metaExportNode.data.estree.body[0].declaration.declarations[0].init
+          ?.type === 'ObjectExpression' &&
         metaExportNode.data.estree.body[0].declaration.declarations[0].init) ||
       undefined
 
@@ -173,10 +179,10 @@ export async function GET(req: NextRequest) {
     const sections = sectionTrees.map((tree) => {
       let [firstNode] = tree.children
 
-      const heading = firstNode.type === 'heading' ? toString(firstNode) : undefined
+      const heading =
+        firstNode.type === 'heading' ? toString(firstNode) : undefined
 
       const slug = heading ? slugger.slug(heading) : undefined
-
 
       return {
         content: toMarkdown(tree),
@@ -198,40 +204,46 @@ export async function GET(req: NextRequest) {
   }
 
   async function walk(dir: string, parentPath?: string): Promise<WalkEntry[]> {
-    const response = await axios.get(`https://api.github.com/repos/vercel/next.js/contents/${dir}`, {
-      headers: {
-        Accept: 'application/vnd.github.v3+json',
-        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-        'Cache-Control': 'no-cache',
-        'Pragma': 'no-cache',
-        'Expires': '0',
-      },
-    });
+    const response = await axios.get(
+      `https://api.github.com/repos/vercel/next.js/contents/${dir}`,
+      {
+        headers: {
+          Accept: 'application/vnd.github.v3+json',
+          Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+          'Cache-Control': 'no-cache',
+          Pragma: 'no-cache',
+          Expires: '0',
+        },
+      }
+    )
 
-    const files: GithubFile[] = response.data;
+    const files: GithubFile[] = response.data
     const entries = await Promise.all(
       files.map(async (file) => {
-        const path = join(dir, file.name);
+        const path = join(dir, file.name)
         if (file.type === 'dir' && file.name === '03-pages') {
           // Skip the "03-pages" subdirectory
-          return [];
+          return []
         } else if (file.type === 'dir') {
-          return walk(path, parentPath);
+          return walk(path, parentPath)
         } else if (file.type === 'file' && /\.mdx?$/.test(file.name)) {
           return [
             {
               path: path,
               parentPath,
             },
-          ];
+          ]
         } else {
-          return [];
+          return []
         }
       })
-    );
+    )
 
-    const flattenedFiles = entries.reduce((all, folderContents) => all.concat(folderContents), []);
-    return flattenedFiles.sort((a, b) => a.path.localeCompare(b.path));
+    const flattenedFiles = entries.reduce(
+      (all, folderContents) => all.concat(folderContents),
+      []
+    )
+    return flattenedFiles.sort((a, b) => a.path.localeCompare(b.path))
   }
 
   abstract class BaseEmbeddingSource {
@@ -239,7 +251,11 @@ export async function GET(req: NextRequest) {
     meta?: Meta
     sections?: Section[]
 
-    constructor(public source: string, public path: string, public parentPath?: string) {}
+    constructor(
+      public source: string,
+      public path: string,
+      public parentPath?: string
+    ) {}
 
     abstract load(): Promise<{
       checksum: string
@@ -249,38 +265,45 @@ export async function GET(req: NextRequest) {
   }
 
   class GithubEmbeddingSource extends BaseEmbeddingSource {
-    type: 'github' = 'github';
+    type: 'github' = 'github'
 
-    constructor(source: string, public filePath: string, public parentFilePath?: string) {
-      const path = filePath.replace(/^docs/, '').replace(/\.mdx?$/, '');
-      const parentPath = parentFilePath?.replace(/^docs/, '').replace(/\.mdx?$/, '');
+    constructor(
+      source: string,
+      public filePath: string,
+      public parentFilePath?: string
+    ) {
+      const path = filePath.replace(/^docs/, '').replace(/\.mdx?$/, '')
+      const parentPath = parentFilePath
+        ?.replace(/^docs/, '')
+        .replace(/\.mdx?$/, '')
 
-      super(source, path, parentPath);
+      super(source, path, parentPath)
     }
 
     async load() {
-      const response = await axios.get(`https://raw.githubusercontent.com/vercel/next.js/canary/${this.filePath}`);
+      const response = await axios.get(
+        `https://raw.githubusercontent.com/vercel/next.js/canary/${this.filePath}`
+      )
 
-      const contents = response.data;
+      const contents = response.data
 
-      const { checksum, meta, sections } = processMdxForSearch(contents);
+      const { checksum, meta, sections } = processMdxForSearch(contents)
 
-      this.checksum = checksum;
-      this.meta = meta;
-      this.sections = sections;
+      this.checksum = checksum
+      this.meta = meta
+      this.sections = sections
 
       return {
         checksum,
         meta,
         sections,
-      };
+      }
     }
   }
 
   type EmbeddingSource = GithubEmbeddingSource
 
   async function generateEmbeddings() {
-
     const shouldRefresh = false
 
     if (
@@ -305,18 +328,22 @@ export async function GET(req: NextRequest) {
     )
 
     if (shouldRefresh) {
-      console.log('Refresh flag set, deleting existing data...');
-      const { error: deletePageSectionError } = await supabaseClient.from('nods_page_section').delete();
+      console.log('Refresh flag set, deleting existing data...')
+      const { error: deletePageSectionError } = await supabaseClient
+        .from('nods_page_section')
+        .delete()
       if (deletePageSectionError) {
-        throw deletePageSectionError;
+        throw deletePageSectionError
       }
 
-      const { error: deletePageError } = await supabaseClient.from('nods_page').delete();
+      const { error: deletePageError } = await supabaseClient
+        .from('nods_page')
+        .delete()
       if (deletePageError) {
-        throw deletePageError;
+        throw deletePageError
       }
     } else {
-      console.log('Checking which pages are new or have changed');
+      console.log('Checking which pages are new or have changed')
     }
 
     const embeddingSources: EmbeddingSource[] = [
@@ -340,12 +367,13 @@ export async function GET(req: NextRequest) {
         const { checksum, meta, sections } = await embeddingSource.load()
 
         // Check for existing page in DB and compare checksums
-        const { error: fetchPageError, data: existingPage } = await supabaseClient
-          .from('nods_page')
-          .select('id, path, checksum, parentPage:parent_page_id(id, path)')
-          .filter('path', 'eq', path)
-          .limit(1)
-          .maybeSingle()
+        const { error: fetchPageError, data: existingPage } =
+          await supabaseClient
+            .from('nods_page')
+            .select('id, path, checksum, parentPage:parent_page_id(id, path)')
+            .filter('path', 'eq', path)
+            .limit(1)
+            .maybeSingle()
 
         if (fetchPageError) {
           throw fetchPageError
@@ -355,19 +383,24 @@ export async function GET(req: NextRequest) {
 
         // We use checksum to determine if this page & its sections need to be regenerated
         if (!shouldRefresh && existingPage?.checksum === checksum) {
-          const existingParentPage = existingPage?.parentPage as Singular<
-            typeof existingPage.parentPage
-          >
+          const existingParentPage =
+            existingPage?.parentPage as unknown as Singular<
+              typeof existingPage.parentPage
+            >
 
           // If parent page changed, update it
+          // @ts-ignore */
           if (existingParentPage?.path !== parentPath) {
-            console.log(`[${path}] Parent page has changed. Updating to '${parentPath}'...`)
-            const { error: fetchParentPageError, data: parentPage } = await supabaseClient
-              .from('nods_page')
-              .select()
-              .filter('path', 'eq', parentPath)
-              .limit(1)
-              .maybeSingle()
+            console.log(
+              `[${path}] Parent page has changed. Updating to '${parentPath}'...`
+            )
+            const { error: fetchParentPageError, data: parentPage } =
+              await supabaseClient
+                .from('nods_page')
+                .select()
+                .filter('path', 'eq', parentPath)
+                .limit(1)
+                .maybeSingle()
 
             if (fetchParentPageError) {
               throw fetchParentPageError
@@ -391,7 +424,9 @@ export async function GET(req: NextRequest) {
               `[${path}] Docs have changed, removing old page sections and their embeddings`
             )
           } else {
-            console.log(`[${path}] Refresh flag set, removing old page sections and their embeddings`)
+            console.log(
+              `[${path}] Refresh flag set, removing old page sections and their embeddings`
+            )
           }
 
           const { error: deletePageSectionError } = await supabaseClient
@@ -404,12 +439,13 @@ export async function GET(req: NextRequest) {
           }
         }
 
-        const { error: fetchParentPageError, data: parentPage } = await supabaseClient
-          .from('nods_page')
-          .select()
-          .filter('path', 'eq', parentPath)
-          .limit(1)
-          .maybeSingle()
+        const { error: fetchParentPageError, data: parentPage } =
+          await supabaseClient
+            .from('nods_page')
+            .select()
+            .filter('path', 'eq', parentPath)
+            .limit(1)
+            .maybeSingle()
 
         if (fetchParentPageError) {
           throw fetchParentPageError
@@ -438,7 +474,9 @@ export async function GET(req: NextRequest) {
           throw upsertPageError
         }
 
-        console.log(`[${path}] Adding ${sections.length} page sections (with embeddings)`)
+        console.log(
+          `[${path}] Adding ${sections.length} page sections (with embeddings)`
+        )
         for (const { slug, heading, content } of sections) {
           // OpenAI recommends replacing newlines with spaces for best results (specific to embeddings)
           const input = content.replace(/\n/g, ' ')
@@ -460,19 +498,20 @@ export async function GET(req: NextRequest) {
 
             const [responseData] = embeddingResponse.data.data
 
-            const { error: insertPageSectionError, data: pageSection } = await supabaseClient
-              .from('nods_page_section')
-              .insert({
-                page_id: page.id,
-                slug,
-                heading,
-                content,
-                token_count: embeddingResponse.data.usage.total_tokens,
-                embedding: responseData.embedding,
-              })
-              .select()
-              .limit(1)
-              .single()
+            const { error: insertPageSectionError, data: pageSection } =
+              await supabaseClient
+                .from('nods_page_section')
+                .insert({
+                  page_id: page.id,
+                  slug,
+                  heading,
+                  content,
+                  token_count: embeddingResponse.data.usage.total_tokens,
+                  embedding: responseData.embedding,
+                })
+                .select()
+                .limit(1)
+                .single()
 
             if (insertPageSectionError) {
               throw insertPageSectionError
@@ -517,10 +556,8 @@ export async function GET(req: NextRequest) {
   try {
     await main()
     return new NextResponse('Embeddings generated successfully.')
-
   } catch (error) {
     console.log(error)
     return new NextResponse('Embeddings generation failed.')
   }
-
 }

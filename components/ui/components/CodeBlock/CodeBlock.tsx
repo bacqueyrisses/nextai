@@ -1,9 +1,9 @@
-"use client"
+'use client'
 import * as React from 'react'
 import { Children, FC } from 'react'
 import * as CopyToClipboard from 'react-copy-to-clipboard'
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { monokaiCustomTheme } from "./CodeBlock.utils"
+import { monokaiCustomTheme } from './CodeBlock.utils'
 // import { Button, IconCheck, IconCopy } from 'ui'
 
 import js from 'react-syntax-highlighter/dist/cjs/languages/hljs/javascript'
@@ -22,7 +22,17 @@ import { Copy, CopyCheck } from 'lucide-react'
 
 export interface CodeBlockProps {
   title?: string
-  language: 'js' | 'jsx' | 'sql' | 'py' | 'bash' | 'ts' | 'dart' | 'json' | 'csharp' | 'kotlin'
+  language:
+    | 'js'
+    | 'jsx'
+    | 'sql'
+    | 'py'
+    | 'bash'
+    | 'ts'
+    | 'dart'
+    | 'json'
+    | 'csharp'
+    | 'kotlin'
   linesToHighlight?: number[]
   hideCopy?: boolean
   hideLineNumbers?: boolean
@@ -32,15 +42,15 @@ export interface CodeBlockProps {
 }
 
 export const CodeBlock = ({
-                            title,
-                            language,
-                            linesToHighlight = [],
-                            className,
-                            value,
-                            children,
-                            hideCopy = false,
-                            hideLineNumbers = false,
-                          }: CodeBlockProps) => {
+  title,
+  language,
+  linesToHighlight = [],
+  className,
+  value,
+  children,
+  hideCopy = false,
+  hideLineNumbers = false,
+}: CodeBlockProps) => {
   const isDarkMode = false
   const monokaiTheme = monokaiCustomTheme(isDarkMode)
 
@@ -65,9 +75,15 @@ export const CodeBlock = ({
   // check the length of the string inside the <code> tag
   // if it's fewer than 70 characters, add a white-space: pre so it doesn't wrap
   const shortCodeBlockClasses =
-    typeof codeValue === 'string' && codeValue.length < 70 ? 'short-inline-codeblock' : ''
+    typeof codeValue === 'string' && codeValue.length < 70
+      ? 'short-inline-codeblock'
+      : ''
 
-  let lang = language ? language : className ? className.replace('language-', '') : 'js'
+  let lang = language
+    ? language
+    : className
+    ? className.replace('language-', '')
+    : 'js'
   // force jsx to be js highlighted
   if (lang === 'jsx') lang = 'js'
   SyntaxHighlighter.registerLanguage('js', js)
@@ -88,12 +104,12 @@ export const CodeBlock = ({
   return (
     <>
       {title && (
-        <div className="rounded-t-md bg-scale-300 py-2 px-4 border-b border-scale-500 text-blue-1100 font-sans">
+        <div className="bg-scale-300 border-scale-500 text-blue-1100 rounded-t-md border-b px-4 py-2 font-sans">
           {title.replace(/%20/g, ' ')}
         </div>
       )}
       {className ? (
-        <div className="relative max-w-[90vw] md:max-w-none overflow-auto">
+        <div className="relative max-w-[90vw] overflow-auto md:max-w-none">
           {/* @ts-ignore */}
           <SyntaxHighlighter
             language={lang}
@@ -101,8 +117,8 @@ export const CodeBlock = ({
             // @ts-ignore
             style={monokaiTheme}
             className={[
-              'code-block border p-4 w-full !my-0 !bg-scale-300',
-              `${!title ? '!rounded-md' : '!rounded-t-none !rounded-b-md'}`,
+              'code-block !bg-scale-300 !my-0 w-full border p-4',
+              `${!title ? '!rounded-md' : '!rounded-b-md !rounded-t-none'}`,
               `${!showLineNumbers ? 'pl-6' : ''}`,
               className,
             ].join(' ')}
@@ -114,7 +130,10 @@ export const CodeBlock = ({
             lineProps={(lineNumber) => {
               if (linesToHighlight.includes(lineNumber)) {
                 return {
-                  style: { display: 'block', backgroundColor: 'var(--colors-scale6)' },
+                  style: {
+                    display: 'block',
+                    backgroundColor: 'var(--colors-scale6)',
+                  },
                 }
               }
               return {}
@@ -151,7 +170,14 @@ export const CodeBlock = ({
                   // type="default"
                   onClick={(e) => handleCopy(e)}
                 >
-                  {copied ? <CopyCheck className={"text-white"} size={15} /> : <Copy className={"text-stone-400 hover:text-stone-200"} size={15} />}
+                  {copied ? (
+                    <CopyCheck className={'text-white'} size={15} />
+                  ) : (
+                    <Copy
+                      className={'text-stone-400 hover:text-stone-200'}
+                      size={15}
+                    />
+                  )}
                 </button>
               </CopyToClipboard>
             </div>
