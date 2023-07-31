@@ -66,7 +66,7 @@ export function SearchDialog() {
                                             className="rounded-full border
                   border-slate-200 bg-slate-50
                   px-2.5 py-1
-                  transition-colors hover:bg-slate-100 dark:border-slate-600 dark:bg-gray-500
+                  transition-colors hover:bg-slate-100 hover:text-stone-900 dark:border-slate-600 dark:bg-gray-500
                   dark:hover:bg-gray-600"
                                             onClick={(_) => setQuery(question.description)}
                                         >

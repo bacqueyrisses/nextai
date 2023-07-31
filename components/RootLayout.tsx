@@ -18,8 +18,8 @@ function Header() {
                     <Image
                         src={'/images/logo.webp'}
                         alt={'logo NextAI'}
-                        width={74}
-                        height={74}
+                        width={85}
+                        height={85}
                     />
                 </Link>
                 <div className="flex items-center gap-x-8">
