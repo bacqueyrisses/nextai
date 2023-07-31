@@ -57,7 +57,7 @@ export function SearchDialog() {
                             </div>
 
                             <div
-                                className="text-xs text-gray-500 dark:text-gray-100">
+                                className="text-sm text-gray-500 dark:text-gray-100">
                                 <div className={'gap-2 flex flex-wrap items-center justify-center'}>
                                     {questions.map((question) => (
                                         <button
@@ -65,7 +65,7 @@ export function SearchDialog() {
                                             type="button"
                                             className="rounded-full border
                   border-slate-200 bg-slate-50
-                  px-2 py-1
+                  px-2.5 py-1
                   transition-colors hover:bg-slate-100 dark:border-slate-600 dark:bg-gray-500
                   dark:hover:bg-gray-600"
                                             onClick={(_) => setQuery(question.description)}

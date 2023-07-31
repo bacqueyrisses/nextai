@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+    reactStrictMode: true,
+    staticPageGenerationTimeout: 500
 }
 
 module.exports = nextConfig
