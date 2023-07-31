@@ -41,7 +41,7 @@ export function SearchDialog() {
                                     ref={inputRef}
                                     value={query}
                                     onChange={(e) => setQuery(e.target.value)}
-                                    className="-my-2.5 flex-auto bg-transparent pl-6 pr-2.5 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none"
+                                    className="-px-2.5 flex-auto bg-transparent pl-6 pr-2.5 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none"
                                 ></input>
                                 <button
                                     type="submit"

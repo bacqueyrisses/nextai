@@ -30,7 +30,7 @@ module.exports = {
             },
             animation: {
                 'spin-slower': 'spin 25s linear infinite',
-                'spin-slow': 'spin 15s linear infinite',
+                'spin-slow': 'spin 10s linear infinite',
             },
             fontFamily: {
                 sans: ['Mona Sans', ...defaultTheme.fontFamily.sans],
