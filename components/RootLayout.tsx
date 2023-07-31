@@ -14,7 +14,7 @@ import Footer from "@/components/Footer";
 function Header() {
     return (
         <Container>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between -ml-4">
                 <Link href="/" aria-label="Home">
                     <Image
                         src={logo}
