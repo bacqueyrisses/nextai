@@ -31,8 +31,8 @@ export default async function Home() {
                         The AI Powered Next.JS Doc Search.
                     </h1>
                     <p className="mt-4 text-xl text-neutral-600">
-                        AI-driven search for a effortless Next.JS documentation exploration.
-                        Daily updated.
+                        AI-driven search for an effortless Next.JS documentation exploration.
+                        Updated daily.
                     </p>
                 </div>
             </Container>
