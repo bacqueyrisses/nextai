@@ -20,7 +20,7 @@ function Header() {
         </Link>
         <div className="flex items-center justify-center gap-3">
           <a
-            className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-4 py-1.5 font-semibold text-white transition hover:bg-neutral-800"
+            className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-4 py-1.5 text-sm font-semibold text-white transition hover:bg-neutral-800 sm:text-base"
             href="https://nextjs.org/docs"
             rel={'noreferrer'}
             target={'_blank'}
