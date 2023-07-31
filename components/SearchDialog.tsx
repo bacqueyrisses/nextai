@@ -40,18 +40,18 @@ export function SearchDialog() {
                 ></input>
                 <button type="submit" className="">
                   <img
-                    src="https://raw.githubusercontent.com/JustJordanT/Windows_11_Emjois/main/crystal-ball.png"
+                    src="https://em-content.zobj.net/thumbs/120/apple/354/sparkles_2728.webp"
                     alt="Crystal Ball"
                     className={`${isLoading ? 'hidden' : 'inline'}`}
                     width="30"
                     height="30"
                   />
                   <img
-                    src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Crystal%20Ball.png"
+                    src="https://camo.envatousercontent.com/c8b4a1fb2365661771e5a787902f5dedabb8cb2d/68747470733a2f2f692e696d6775722e636f6d2f33326c4f6e326c2e676966"
                     alt="Crystal Ball"
                     className={`${isLoading ? 'inline' : 'hidden'}`}
-                    width="30"
-                    height="30"
+                    width="32"
+                    height="32"
                   />
                   {/*<Image*/}
                   {/*  src={'/images/shape.webp'}*/}

@@ -14,7 +14,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <body className="flex min-h-full flex-col">
         <link
           rel="icon"
-          href="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Crystal%20Ball.png"
+          href="https://em-content.zobj.net/thumbs/120/apple/354/sparkles_2728.webp"
           sizes="any"
         />
         <RootLayout>{children}</RootLayout>
