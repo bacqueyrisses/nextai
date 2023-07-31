@@ -8,7 +8,7 @@ interface AISearchI {
   message: string
 }
 
-export default function AISearch({ message }: AISearchI) {
+export default function SearchAI({ message }: AISearchI) {
   return (
     <div key={12} className="mb-6 [overflow-anchor:none]">
       <div className="mb-6 flex flex-col items-center gap-4 [overflow-anchor:none] sm:flex-row sm:items-start sm:gap-6">

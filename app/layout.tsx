@@ -1,5 +1,5 @@
 import '@/styles/tailwind.css'
-import { RootLayout } from '@/components/RootLayout'
+import RootLayout from '@/components/RootLayout'
 
 export const metadata = {
   title: {

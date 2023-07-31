@@ -1,5 +1,5 @@
-import { Container } from '@/components/Container'
-import { SearchDialog } from '@/components/SearchDialog'
+import Container from '@/components/Container'
+import SearchBox from '@/components/SearchBox'
 
 function SearchContainer() {
   return (
@@ -27,7 +27,7 @@ function SearchContainer() {
               </span>
             </h3>
             <div>
-              <SearchDialog />
+              <SearchBox />
             </div>
           </div>
         </div>

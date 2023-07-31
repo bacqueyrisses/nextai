@@ -4,12 +4,10 @@ import * as React from 'react'
 import { useRef } from 'react'
 import { useCompletion } from 'ai/react'
 import { Frown, User } from 'lucide-react'
-import AISearch from '@/components/AISearch'
+import SearchAI from '@/components/SearchAI'
 import { questions } from '@/config/questions'
-import Image from 'next/image'
 
-export function SearchDialog() {
-  const [open, setOpen] = React.useState(false)
+export default function SearchBox() {
   const [query, setQuery] = React.useState<string>('')
 
   const { complete, completion, isLoading, error } = useCompletion({
@@ -107,7 +105,7 @@ export function SearchDialog() {
             )}
             {completion && !error ? (
               <div className={'space-y-5'}>
-                <AISearch message={completion} />
+                <SearchAI message={completion} />
               </div>
             ) : null}
           </div>
