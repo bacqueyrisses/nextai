@@ -31,9 +31,10 @@ export function SearchDialog() {
         <>
             <div className={'w-full overflow-y-auto'}>
                 <form onSubmit={handleSubmit}>
-                    <div className="space-y-10 py-4 text-slate-700">
-                        <div className={'space-y-4'}>
-                            <div className="mt-5 flex rounded-3xl bg-white py-4 pr-2.5 shadow-xl shadow-blue-900/5">
+                    <div className="space-y-10 sm:py-4 text-slate-700">
+                        <div className={'space-y-5'}>
+                            <div
+                                className="mt-5 flex rounded-3xl bg-white py-2 sm:py-4 pr-2.5 shadow-xl shadow-blue-900/5">
                                 <input
                                     placeholder="Ask a question about Next.JS..."
                                     name="search"
