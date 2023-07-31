@@ -21,17 +21,6 @@ export default function AISearch({ message }: AISearchI) {
             components={markdownComponents}
             linkTarget="_blank"
             className="prose dark:prose-dark max-w-full space-y-4"
-            // transformLinkUri={(href) => {
-            //   console.log(href)
-            //   const supabaseUrl = new URL('www.bacqueyrisses.dev')
-            //   const linkUrl = new URL(href, 'https://www.bacqueyrisses.dev')
-            //
-            //   if (linkUrl.origin === supabaseUrl.origin) {
-            //     return linkUrl.toString()
-            //   }
-            //
-            //   return "www.bacqueyrisses.dev"
-            // }}
           >
             {message}
           </ReactMarkdown>

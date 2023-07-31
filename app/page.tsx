@@ -5,7 +5,7 @@ function SearchContainer() {
   return (
     <>
       <Container className="mt-10 sm:mt-16">
-        <div className="relative -mx-2 rounded-4xl bg-stone-100 px-4 pb-14 pt-12 sm:-mx-6 sm:px-6 md:mx-0 md:px-16 xl:px-24">
+        <div className="relative -mx-2 rounded-4xl bg-stone-100 px-4 pb-12 pt-12 sm:-mx-6 sm:px-6 sm:pb-14 md:mx-0 md:px-16 xl:px-24">
           <div className="relative mx-auto grid max-w-2xl grid-cols-1 gap-x-32 xl:max-w-none">
             <h3 className="flex items-baseline justify-center gap-1 text-lg font-semibold tracking-tight text-stone-800 sm:justify-start sm:text-xl">
               <span>Browse the documentation</span>

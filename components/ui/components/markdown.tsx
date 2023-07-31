@@ -13,6 +13,7 @@ export const markdownComponents = {
           {...props}
           className={['rounded-md border'].join(' ')}
           layout="fill"
+          alt={'code snippet next AI'}
         />
       </span>
     )

@@ -59,15 +59,6 @@ export function SearchDialog() {
                     width="28"
                     height="28"
                   />
-                  {/*<Image*/}
-                  {/*  src={'/images/shape.webp'}*/}
-                  {/*  className={`${*/}
-                  {/*    isLoading && 'animate-spin-slower sm:animate-spin-slow'*/}
-                  {/*  }`}*/}
-                  {/*  alt={'logo NextAI'}*/}
-                  {/*  width={50}*/}
-                  {/*  height={50}*/}
-                  {/*/>*/}
                 </button>
               </div>
 
