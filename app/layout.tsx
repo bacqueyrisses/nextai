@@ -4,7 +4,7 @@ import {RootLayout} from '@/components/RootLayout'
 export const metadata = {
     title: {
         template: 'NextAI',
-        default: 'Next.JS AI Doc Search.',
+        default: '✨ Next.JS AI Doc Search',
     },
 }
 

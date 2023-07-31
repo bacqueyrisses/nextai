@@ -4,6 +4,7 @@ import {useId, useRef, useState} from 'react'
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
 import {motion, MotionConfig, useReducedMotion} from 'framer-motion'
+import logo from "@/public/images/logo.webp"
 
 import {Container} from '@/components/Container'
 import {GridPattern} from '@/components/GridPattern'
@@ -16,10 +17,10 @@ function Header() {
             <div className="flex items-center justify-between">
                 <Link href="/" aria-label="Home">
                     <Image
-                        src={'/images/logo.webp'}
+                        src={logo}
                         alt={'logo NextAI'}
-                        width={85}
-                        height={85}
+                        width={80}
+                        height={80}
                     />
                 </Link>
                 <div className="flex items-center gap-x-8">
@@ -51,7 +52,7 @@ function RootLayoutInner({children}: {
         <MotionConfig transition={shouldReduceMotion ? {duration: 0} : undefined}>
             <header>
                 <div
-                    className="absolute left-0 right-0 top-2 z-40 pt-14"
+                    className="absolute left-0 right-0 top-2 z-40 sm:p-5 py-5 sm:pt-14"
                 >
                     <Header
 
@@ -66,7 +67,7 @@ function RootLayoutInner({children}: {
                     aria-hidden={expanded ? undefined : 'true'}
                 >
                     <motion.div layout className="bg-neutral-800">
-                        <div className="bg-neutral-950 pb-16 pt-14">
+                        <div className="bg-neutral-950 pb-16 pt-5 sm:pt-14">
                             <Header
 
                             />

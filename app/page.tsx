@@ -27,7 +27,7 @@ export default async function Home() {
         <>
             <Container className="mt-10 sm:mt-20">
                 <div className="max-w-3xl">
-                    <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl">
+                    <h1 className="font-display text-3xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl">
                         The AI Powered Next.JS Doc Search.
                     </h1>
                     <p className="mt-4 text-xl text-neutral-600">
