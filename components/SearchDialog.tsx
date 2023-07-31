@@ -49,7 +49,7 @@ export function SearchDialog() {
                                 >
                                     <Image
                                         src={'/images/shape.webp'}
-                                        className={`${isLoading && "sm:animate-spin-slow animate-spin"}`}
+                                        className={`${isLoading && "sm:animate-spin-slow animate-spin-slower"}`}
                                         alt={'logo NextAI'}
                                         width={50}
                                         height={50}

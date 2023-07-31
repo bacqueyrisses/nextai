@@ -29,7 +29,8 @@ module.exports = {
                 '4xl': '2.5rem',
             },
             animation: {
-                'spin-slow': 'spin 25s linear infinite',
+                'spin-slower': 'spin 25s linear infinite',
+                'spin-slow': 'spin 15s linear infinite',
             },
             fontFamily: {
                 sans: ['Mona Sans', ...defaultTheme.fontFamily.sans],
