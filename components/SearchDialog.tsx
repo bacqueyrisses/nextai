@@ -58,7 +58,7 @@ export function SearchDialog() {
                                 <div className={'gap-2 flex flex-wrap items-center justify-center'}>
                                     {questions.map((question) => (
                                         <div key={question.id}
-                                             className={"w-full inline-flex items-center justify-center"}>
+                                             className={"w-full sm:w-auto sm:inline inline-flex items-center justify-center"}>
                                             <button
                                                 type="button"
                                                 className="rounded-full border
