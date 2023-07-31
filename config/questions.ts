@@ -9,7 +9,7 @@ export const questions: Question[] = [
   },
   {
     id: 2,
-    description: "How to start a server?"
+    description: "How to get query parameters?"
   },
   {
     id: 3,

@@ -1,7 +1,7 @@
 import remarkGfm from 'remark-gfm'
 import ReactMarkdown from 'react-markdown'
-import { markdownComponents } from '@/components/ui/components/markdown'
-import { User, Wand, Check } from 'lucide-react'
+import {markdownComponents} from '@/components/ui/components/markdown'
+import {Wand} from 'lucide-react'
 import * as React from 'react'
 
 interface AISearchI {

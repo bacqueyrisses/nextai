@@ -1,22 +1,19 @@
-import "@/styles/globals.css";
-import { Metadata } from 'next'
+import '@/styles/tailwind.css'
+import { RootLayout } from '@/components/RootLayout'
 
-export const metadata: Metadata = {
-  title: 'Home',
-  description: 'Welcome to Next.js',
+export const metadata = {
+  title: {
+    template: 'NextAI',
+    default: 'Meta',
+  },
 }
-export default function RootLayout({
-                                     // Layouts must accept a children prop.
-                                     // This will be populated with nested layouts or pages
-                                     children,
-                                   }: {
-  children: React.ReactNode
-}) {
+
+export default function Layout({ children }) {
   return (
-    <html lang='en'>
-    <body className={"min-h-screen flex gap-10 flex-col justify-between p-4 sm:px-0"}>{children}</body>
+    <html lang="en" className="h-full bg-neutral-950 text-base antialiased">
+      <body className="flex min-h-full flex-col">
+        <RootLayout>{children}</RootLayout>
+      </body>
     </html>
   )
 }
-
-//bg-[#F1F4F5]
