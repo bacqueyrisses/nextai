@@ -65,7 +65,7 @@ export function SearchDialog() {
                 </button>
               </div>
 
-              <div className="text-sm text-gray-500 dark:text-gray-100">
+              <div className="text-sm text-gray-600">
                 <div
                   className={'flex flex-wrap items-center justify-center gap-2'}
                 >
@@ -81,8 +81,7 @@ export function SearchDialog() {
                         className="rounded-full border
                   border-slate-200 bg-slate-50
                   px-2.5 py-1
-                  text-center transition-colors hover:bg-slate-100 hover:text-stone-900 dark:border-slate-600
-                  dark:bg-gray-500 dark:hover:bg-gray-600"
+                  text-center transition-colors hover:bg-slate-100 hover:text-stone-900"
                         onClick={(_) => setQuery(question.description)}
                       >
                         {question.description}

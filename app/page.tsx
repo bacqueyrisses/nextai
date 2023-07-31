@@ -44,7 +44,7 @@ export default async function Home() {
           <h1 className="font-display text-3xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl">
             The AI Powered Next.JS Doc Search.
           </h1>
-          <p className="mt-4 text-xl text-neutral-600">
+          <p className="mt-4 text-lg text-neutral-600 sm:text-xl">
             AI-driven search for an effortless Next.JS documentation
             exploration. Updated daily.
           </p>
