@@ -56,13 +56,14 @@ export function SearchDialog() {
                                 </button>
                             </div>
 
-                            <div className="flex items-center justify-center text-xs text-gray-500 dark:text-gray-100">
-                                <div className={'space-x-2'}>
+                            <div
+                                className="text-xs text-gray-500 dark:text-gray-100">
+                                <div className={'gap-2 flex flex-wrap items-center justify-center'}>
                                     {questions.map((question) => (
                                         <button
                                             key={question.id}
                                             type="button"
-                                            className="rounded-md border
+                                            className="rounded-full border
                   border-slate-200 bg-slate-50
                   px-2 py-1
                   transition-colors hover:bg-slate-100 dark:border-slate-600 dark:bg-gray-500
