@@ -25,7 +25,7 @@ function Header() {
             rel={'noreferrer'}
             target={'_blank'}
           >
-            <span className="relative top-px">Docs</span>
+            <span className="relative">Docs</span>
             <span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
