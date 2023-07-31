@@ -7,7 +7,7 @@ function SearchContainer() {
         <>
             <Container className="mt-10 sm:mt-16">
                 <div
-                    className="relative -mx-2 rounded-4xl bg-stone-100 px-4 py-10 sm:-mx-6 sm:px-6 md:mx-0 md:px-16 xl:px-24">
+                    className="relative -mx-2 rounded-4xl bg-stone-100 px-4 pt-10 pb-2 sm:-mx-6 sm:px-6 md:mx-0 md:px-16 xl:px-24">
                     <div className="relative mx-auto grid max-w-2xl grid-cols-1 gap-x-32 xl:max-w-none">
                         <h3 className="text-lg flex sm:justify-start justify-center items-center gap-1 font-semibold tracking-tight text-stone-800">
                             <span>Browse the documentation</span><span><ArrowDownToDot size={15}/></span>

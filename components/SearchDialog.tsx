@@ -8,16 +8,12 @@ import AISearch from '@/components/AISearch'
 import {questions} from '@/config/questions'
 import Image from "next/image";
 
-type RouterType = 'APP' | 'PAGES'
-
 export function SearchDialog() {
     const [open, setOpen] = React.useState(false)
     const [query, setQuery] = React.useState<string>('')
-    const [routerType, setRouterType] = React.useState<RouterType>('APP')
 
     const {complete, completion, isLoading, error} = useCompletion({
         api: '/api/vector-search',
-        body: {routerType},
     })
     const inputRef = useRef<HTMLInputElement>(null)
 
@@ -61,18 +57,20 @@ export function SearchDialog() {
                                 className="text-sm text-gray-500 dark:text-gray-100">
                                 <div className={'gap-2 flex flex-wrap items-center justify-center'}>
                                     {questions.map((question) => (
-                                        <button
-                                            key={question.id}
-                                            type="button"
-                                            className="rounded-full border
+                                        <div key={question.id}
+                                             className={"w-full inline-flex items-center justify-center"}>
+                                            <button
+                                                type="button"
+                                                className="rounded-full border
                   border-slate-200 bg-slate-50
                   px-2.5 py-1
                   transition-colors hover:bg-slate-100 hover:text-stone-900 dark:border-slate-600 dark:bg-gray-500
-                  dark:hover:bg-gray-600"
-                                            onClick={(_) => setQuery(question.description)}
-                                        >
-                                            {question.description}
-                                        </button>
+                  dark:hover:bg-gray-600 text-center"
+                                                onClick={(_) => setQuery(question.description)}
+                                            >
+                                                {question.description}
+                                            </button>
+                                        </div>
                                     ))}
                                 </div>
                             </div>
@@ -89,16 +87,6 @@ export function SearchDialog() {
                   </span>
                                 </div>
                             )}
-                            <div className={`${query ? 'visible' : 'invisible'} flex gap-6`}>
-                <span
-                    className={`flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 p-2 text-center dark:bg-slate-300`}
-                >
-                  <User width={18}/>{' '}
-                </span>
-                                <p className="mt-0.5 font-semibold text-slate-700 dark:text-slate-100">
-                                    {query}
-                                </p>
-                            </div>
                             {completion && !error ? (
                                 <>
                                     <AISearch message={completion}/>
