@@ -27,7 +27,7 @@ export function SearchDialog() {
     <>
       <div className={'w-full overflow-y-auto'}>
         <form onSubmit={handleSubmit}>
-          <div className="space-y-10 text-slate-700 sm:pt-4">
+          <div className="space-y-10 pt-2 text-slate-700 sm:pt-4">
             <div className={'space-y-7'}>
               <div className="mt-2 flex rounded-3xl bg-white py-2 pr-4 shadow-xl shadow-blue-900/5 sm:py-4">
                 <input
