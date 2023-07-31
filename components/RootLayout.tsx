@@ -8,6 +8,7 @@ import {motion, MotionConfig, useReducedMotion} from 'framer-motion'
 import {Container} from '@/components/Container'
 import {GridPattern} from '@/components/GridPattern'
 import Image from 'next/image'
+import Footer from "@/components/Footer";
 
 function Header() {
     return (
@@ -17,8 +18,8 @@ function Header() {
                     <Image
                         src={'/images/logo.webp'}
                         alt={'logo NextAI'}
-                        width={50}
-                        height={50}
+                        width={74}
+                        height={74}
                     />
                 </Link>
                 <div className="flex items-center gap-x-8">
@@ -102,6 +103,8 @@ function RootLayoutInner({children}: {
                     />
 
                     <main className="w-full flex-auto">{children}</main>
+
+                    <Footer/>
                 </motion.div>
             </motion.div>
         </MotionConfig>
