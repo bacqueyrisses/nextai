@@ -11,8 +11,7 @@ interface AISearchI {
 export default function AISearch({ message }: AISearchI) {
   return (
     <div key={12} className="mb-6 [overflow-anchor:none]">
-      <div className="mb-6 flex gap-6 [overflow-anchor:none]">
-        {/*<AiIconChat />*/}
+      <div className="mb-6 flex flex-col items-center gap-4 [overflow-anchor:none] sm:flex-row sm:items-start sm:gap-6">
         <>
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500 p-2 text-center">
             <Wand width={18} className="text-white" />
@@ -21,7 +20,7 @@ export default function AISearch({ message }: AISearchI) {
             remarkPlugins={[remarkGfm]}
             components={markdownComponents}
             linkTarget="_blank"
-            className="prose dark:prose-dark space-y-4"
+            className="prose dark:prose-dark max-w-full space-y-4"
             // transformLinkUri={(href) => {
             //   console.log(href)
             //   const supabaseUrl = new URL('www.bacqueyrisses.dev')

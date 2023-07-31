@@ -18,6 +18,7 @@ import kotlin from 'react-syntax-highlighter/dist/cjs/languages/hljs/kotlin'
 
 import { useState } from 'react'
 import { Copy, CopyCheck } from 'lucide-react'
+
 // import { useTheme } from 'common/Providers'
 
 export interface CodeBlockProps {
@@ -109,7 +110,7 @@ export const CodeBlock = ({
         </div>
       )}
       {className ? (
-        <div className="relative max-w-[90vw] overflow-auto md:max-w-none">
+        <div className="relative max-w-full overflow-auto md:max-w-none">
           {/* @ts-ignore */}
           <SyntaxHighlighter
             language={lang}
@@ -117,7 +118,7 @@ export const CodeBlock = ({
             // @ts-ignore
             style={monokaiTheme}
             className={[
-              'code-block !bg-scale-300 !my-0 w-full border p-4',
+              'code-block !bg-scale-300 !my-0 w-full border px-2 py-4 sm:px-4',
               `${!title ? '!rounded-md' : '!rounded-b-md !rounded-t-none'}`,
               `${!showLineNumbers ? 'pl-6' : ''}`,
               className,

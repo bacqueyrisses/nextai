@@ -23,6 +23,12 @@ export function SearchDialog() {
     void complete(query)
   }
 
+  const handleQuestion = (question: string) => {
+    if (!question) return inputRef.current?.focus()
+    setQuery(question)
+    void complete(question)
+  }
+
   return (
     <>
       <div className={'w-full overflow-y-auto'}>
@@ -43,15 +49,15 @@ export function SearchDialog() {
                     src="https://em-content.zobj.net/thumbs/120/apple/354/sparkles_2728.webp"
                     alt="Crystal Ball"
                     className={`${isLoading ? 'hidden' : 'inline'}`}
-                    width="30"
-                    height="30"
+                    width="28"
+                    height="28"
                   />
                   <img
                     src="https://camo.envatousercontent.com/c8b4a1fb2365661771e5a787902f5dedabb8cb2d/68747470733a2f2f692e696d6775722e636f6d2f33326c4f6e326c2e676966"
                     alt="Crystal Ball"
                     className={`${isLoading ? 'inline' : 'hidden'}`}
-                    width="32"
-                    height="32"
+                    width="28"
+                    height="28"
                   />
                   {/*<Image*/}
                   {/*  src={'/images/shape.webp'}*/}
@@ -65,35 +71,39 @@ export function SearchDialog() {
                 </button>
               </div>
 
-              <div className="text-sm text-gray-600">
-                <div
-                  className={'flex flex-wrap items-center justify-center gap-2'}
-                >
-                  {questions.map((question) => (
-                    <div
-                      key={question.id}
-                      className={
-                        'inline-flex w-full items-center justify-center sm:inline sm:w-auto'
-                      }
-                    >
-                      <button
-                        type="button"
-                        className="rounded-full border
+              {!query && (
+                <div className="text-sm text-gray-600">
+                  <div
+                    className={
+                      'flex flex-wrap items-center justify-center gap-2'
+                    }
+                  >
+                    {questions.map((question) => (
+                      <div
+                        key={question.id}
+                        className={
+                          'inline-flex w-full items-center justify-center sm:inline sm:w-auto'
+                        }
+                      >
+                        <button
+                          type="button"
+                          className="rounded-full border
                   border-slate-200 bg-slate-50
                   px-2.5 py-1
                   text-center transition-colors hover:bg-slate-100 hover:text-stone-900"
-                        onClick={(_) => setQuery(question.description)}
-                      >
-                        {question.description}
-                      </button>
-                    </div>
-                  ))}
+                          onClick={() => handleQuestion(question.description)}
+                        >
+                          {question.description}
+                        </button>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
 
             {error && (
-              <div className={'space-y-5 px-4'}>
+              <div className={'space-y-5'}>
                 <div className="flex items-center gap-4">
                   <span className="flex h-8 w-8 items-center justify-center rounded-full bg-red-100 p-2 text-center">
                     <Frown width={18} />
@@ -105,7 +115,7 @@ export function SearchDialog() {
               </div>
             )}
             {completion && !error ? (
-              <div className={'space-y-5 px-4'}>
+              <div className={'space-y-5'}>
                 <AISearch message={completion} />
               </div>
             ) : null}
