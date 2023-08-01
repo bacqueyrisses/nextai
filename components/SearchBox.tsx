@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import { MouseEventHandler, useRef, useState } from 'react'
+import { FormEvent, MouseEventHandler, useRef, useState } from 'react'
 import { useCompletion } from 'ai/react'
 import { Eraser, Frown } from 'lucide-react'
 import { questions } from '@/config/questions'
@@ -17,6 +17,15 @@ export default function SearchBox() {
     api: '/api/vector-search',
   })
   const inputRef = useRef<HTMLInputElement>(null)
+
+  const hideMobileKeyboardOnReturn = (
+    e: React.KeyboardEvent<HTMLInputElement>
+  ) => {
+    const key = e.key
+    if (key === 'Enter') {
+      e.currentTarget.blur()
+    }
+  }
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()
@@ -53,6 +62,7 @@ export default function SearchBox() {
                   ref={inputRef}
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
+                  onKeyDown={hideMobileKeyboardOnReturn}
                   className="flex-auto bg-transparent pl-6 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none"
                 ></input>
                 <button type="submit" className="">
@@ -119,7 +129,7 @@ export default function SearchBox() {
             {completion && !error && !displayedQuestions ? (
               <div>
                 <div className="mb-6 [overflow-anchor:none]">
-                  <div className="mb-6 flex flex-col items-center gap-6 [overflow-anchor:none] sm:flex-row sm:items-start sm:gap-4 sm:gap-6">
+                  <div className="mb-6 flex flex-col items-center gap-4 gap-6 [overflow-anchor:none] sm:flex-row sm:items-start sm:gap-6">
                     <>
                       <button
                         onClick={handleClean}
