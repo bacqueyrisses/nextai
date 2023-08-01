@@ -78,7 +78,7 @@ export default function SearchBox() {
                     height="28"
                   />
                   <img
-                    src="https://camo.envatousercontent.com/c8b4a1fb2365661771e5a787902f5dedabb8cb2d/68747470733a2f2f692e696d6775722e636f6d2f33326c4f6e326c2e676966"
+                    src="https://em-content.zobj.net/source/telegram/358/sparkles_2728.webp"
                     alt="Crystal Ball"
                     className={`${isLoading ? 'inline' : 'hidden'}`}
                     width="28"
