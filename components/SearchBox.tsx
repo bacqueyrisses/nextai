@@ -137,7 +137,7 @@ export default function SearchBox() {
                     <>
                       <button
                         onClick={handleClean}
-                        className="flex h-8 w-8 items-center justify-center rounded-full bg-yellow-400 p-2 text-center hover:bg-yellow-300"
+                        className="flex h-8 w-8 items-center justify-center rounded-full bg-green-600 p-2 text-center hover:bg-green-500"
                       >
                         <RotateCcw width={18} className="text-white" />
                       </button>
