@@ -20,7 +20,7 @@ function Header() {
         </Link>
         <div className="flex items-center justify-center gap-3">
           <a
-            className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-4 py-1.5 text-sm font-semibold text-white transition hover:bg-neutral-800 sm:text-base"
+            className="inline-flex items-baseline gap-2 rounded-full bg-neutral-950 px-4 py-1.5 text-sm font-semibold text-white transition hover:bg-neutral-800 sm:text-base"
             href="https://nextjs.org/docs"
             rel={'noreferrer'}
             target={'_blank'}
@@ -32,8 +32,8 @@ function Header() {
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
-                stroke="currentColor"
-                className="h-4 w-4"
+                stroke="text-muted"
+                className="h-3 w-3"
               >
                 <path
                   strokeLinecap="round"

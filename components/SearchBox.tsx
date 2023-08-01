@@ -22,8 +22,11 @@ export default function SearchBox() {
     e: React.KeyboardEvent<HTMLInputElement>
   ) => {
     const key = e.key
-    if (key === 'Enter') {
+    if (key === 'Enter' || key === '13') {
+      if (!query) return inputRef.current?.focus()
       e.currentTarget.blur()
+      setDisplayedQuestions(false)
+      void complete(query)
     }
   }
 
