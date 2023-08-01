@@ -42,12 +42,18 @@ export default async function Home() {
       <Container className="mt-10 sm:mt-20">
         <div className="max-w-3xl">
           <h1 className="font-display text-3xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl">
-            The AI-Powered <br />{' '}
-            <span className={'whitespace-nowrap'}>Next.JS Documentation</span>
+            The AI-Powered
+            <br />
+            Next.JS
+            <span className={'hidden sm:inline '}> Documentation</span>
+            <span className={'inline sm:hidden'}> Doc</span>
+            <br />
           </h1>
-          <p className="mt-4 text-lg text-neutral-600 sm:text-xl">
-            NextAI: Effortless Next.JS documentation exploration powered by AI.
-            Daily updated.
+          <p className="mt-4 flex flex-col text-lg text-neutral-600 sm:flex-row sm:gap-1 sm:text-xl">
+            <span>
+              Effortless Next.JS documentation exploration powered by AI.{'  '}
+            </span>
+            <span>Daily updated.</span>
           </p>
         </div>
       </Container>
