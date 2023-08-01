@@ -10,3 +10,15 @@
     font-stretch: 75% 125%;
     src: url('../public/fonts/Mona-Sans.var.woff2') format('woff2');
 }
+
+/* Prevent blue highlight on selection */
+::selection {
+    background-color: transparent;
+    color: inherit;
+}
+
+/* Prevent blue highlight on autofill in Chrome/Safari */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset; /* Change 'white' to desired background color */
+    -webkit-text-fill-color: inherit;
+}
