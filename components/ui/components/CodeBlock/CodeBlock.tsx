@@ -52,7 +52,7 @@ export const CodeBlock = ({
   hideCopy = false,
   hideLineNumbers = false,
 }: CodeBlockProps) => {
-  const isDarkMode = false
+  const isDarkMode = true
   const monokaiTheme = monokaiCustomTheme(isDarkMode)
 
   const [copied, setCopied] = useState(false)
@@ -124,8 +124,8 @@ export const CodeBlock = ({
               className,
             ].join(' ')}
             customStyle={{
-              fontSize: large ? 18 : 13,
-              lineHeight: large ? 1.5 : 1.4,
+              fontSize: large ? 18 : 15,
+              lineHeight: large ? 1.6 : 1.5,
             }}
             showLineNumbers={showLineNumbers}
             lineProps={(lineNumber) => {
@@ -172,11 +172,13 @@ export const CodeBlock = ({
                   onClick={(e) => handleCopy(e)}
                 >
                   {copied ? (
-                    <CopyCheck className={'text-white'} size={15} />
+                    <CopyCheck className={'mr-2 mt-2 text-white'} size={18} />
                   ) : (
                     <Copy
-                      className={'text-stone-400 hover:text-stone-200'}
-                      size={15}
+                      className={
+                        'mr-2 mt-2 text-stone-400 hover:text-stone-200'
+                      }
+                      size={18}
                     />
                   )}
                 </button>
