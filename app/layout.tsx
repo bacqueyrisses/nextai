@@ -2,10 +2,8 @@ import '@/styles/tailwind.css'
 import RootLayout from '@/components/RootLayout'
 
 export const metadata = {
-  title: {
-    template: 'NextAI',
-    default: 'Next.JS AI Doc',
-  },
+  title: 'NextAI',
+  description: 'The Next.JS AI Doc Search',
 }
 
 export default function Layout({ children }: { children: React.ReactNode }) {
