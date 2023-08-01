@@ -6,7 +6,7 @@ import Image from 'next/image'
 export const markdownComponents = {
   mono: (props: any) => <code className="text-sm">{props.children}</code>,
   code: (props: any) => <CodeBlock {...props} />,
-  a: (props: { target: string; href: string; children: string }) => (
+  a: (props: any) => (
     <a
       style={{
         textDecoration: 'underline',
