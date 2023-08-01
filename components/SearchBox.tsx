@@ -32,6 +32,7 @@ export default function SearchBox() {
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()
+    stop()
     if (!query) return inputRef.current?.focus()
     setDisplayedQuestions(false)
     void complete(query)

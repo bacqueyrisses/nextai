@@ -42,11 +42,11 @@ export default async function Home() {
       <Container className="mt-10 sm:mt-20">
         <div className="max-w-3xl">
           <h1 className="font-display text-3xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl">
-            The AI Powered Next.JS Doc Search.
+            The AI-Powered <br /> Next.JS Documentation.
           </h1>
           <p className="mt-4 text-lg text-neutral-600 sm:text-xl">
-            AI-driven search for an effortless Next.JS documentation
-            exploration. Updated daily.
+            NextAI: Effortless Next.JS documentation exploration powered by AI.
+            Daily updated.
           </p>
         </div>
       </Container>
