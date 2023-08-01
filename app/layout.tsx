@@ -10,10 +10,7 @@ export const metadata = {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      className="h-full bg-gradient-to-b from-neutral-950 to-white text-base antialiased"
-    >
+    <html lang="en" className="h-full bg-neutral-950 text-base antialiased">
       <body className="flex min-h-full flex-col">
         <link
           rel="icon"
