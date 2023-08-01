@@ -1,9 +1,9 @@
 'use client'
 
 import * as React from 'react'
-import { FormEvent, MouseEventHandler, useRef, useState } from 'react'
+import { MouseEventHandler, useRef, useState } from 'react'
 import { useCompletion } from 'ai/react'
-import { Eraser, Frown } from 'lucide-react'
+import { Frown, RotateCcw } from 'lucide-react'
 import { questions } from '@/config/questions'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
@@ -137,9 +137,9 @@ export default function SearchBox() {
                     <>
                       <button
                         onClick={handleClean}
-                        className="flex h-8 w-8 items-center justify-center rounded-full bg-cyan-500 p-2 text-center hover:bg-cyan-400"
+                        className="flex h-8 w-8 items-center justify-center rounded-full bg-yellow-400 p-2 text-center hover:bg-yellow-300"
                       >
-                        <Eraser width={18} className="text-white" />
+                        <RotateCcw width={18} className="text-white" />
                       </button>
                       <ReactMarkdown
                         remarkPlugins={[remarkGfm]}
