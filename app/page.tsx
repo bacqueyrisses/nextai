@@ -49,7 +49,7 @@ export default async function Home() {
             <span>
               Effortless Next.JS documentation exploration powered by AI.{'  '}
             </span>
-            <span>Daily updated.</span>
+            <span>Updated daily.</span>
           </p>
         </div>
       </Container>
