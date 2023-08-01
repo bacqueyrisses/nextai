@@ -118,8 +118,8 @@ export const CodeBlock = ({
             // @ts-ignore
             style={monokaiTheme}
             className={[
-              'code-block !bg-scale-300 !my-0 w-full border px-2 py-4 sm:px-4',
-              `${!title ? '!rounded-md' : '!rounded-b-md !rounded-t-none'}`,
+              'code-block !bg-scale-300 !my-0 w-full border px-2 py-4 sm:p-6',
+              `${!title ? '!rounded-xl' : '!rounded-b-xl !rounded-t-none'}`,
               `${!showLineNumbers ? 'pl-6' : ''}`,
               className,
             ].join(' ')}
