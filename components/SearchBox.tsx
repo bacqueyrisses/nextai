@@ -146,6 +146,16 @@ export default function SearchBox() {
                         components={markdownComponents}
                         linkTarget="_blank"
                         className="prose dark:prose-dark max-w-full space-y-4"
+                        transformLinkUri={(href) => {
+                          const nextUrl = new URL('https://nextjs.org')
+                          const linkUrl = new URL(href, 'https://nextjs.org')
+
+                          if (linkUrl.origin === nextUrl.origin) {
+                            return linkUrl.toString()
+                          }
+
+                          return href
+                        }}
                       >
                         {completion}
                       </ReactMarkdown>
