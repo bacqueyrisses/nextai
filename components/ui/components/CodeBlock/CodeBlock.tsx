@@ -4,7 +4,6 @@ import { Children, FC } from 'react'
 import * as CopyToClipboard from 'react-copy-to-clipboard'
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { monokaiCustomTheme } from './CodeBlock.utils'
-// import { Button, IconCheck, IconCopy } from 'ui'
 
 import js from 'react-syntax-highlighter/dist/cjs/languages/hljs/javascript'
 import ts from 'react-syntax-highlighter/dist/cjs/languages/hljs/typescript'
@@ -19,7 +18,7 @@ import kotlin from 'react-syntax-highlighter/dist/cjs/languages/hljs/kotlin'
 import { useState } from 'react'
 import { Copy, CopyCheck } from 'lucide-react'
 
-// import { useTheme } from 'common/Providers'
+// import { useTheme }
 
 export interface CodeBlockProps {
   title?: string
@@ -62,7 +61,7 @@ export const CodeBlock = ({
     setCopied(true)
     setTimeout(() => {
       setCopied(false)
-    }, 1000)
+    }, 1200)
   }
 
   // Extract string when `children` has a single string node
