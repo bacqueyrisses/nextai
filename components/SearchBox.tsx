@@ -1,16 +1,19 @@
 'use client'
 
 import * as React from 'react'
-import { useRef } from 'react'
+import { MouseEventHandler, useRef, useState } from 'react'
 import { useCompletion } from 'ai/react'
-import { Frown, User } from 'lucide-react'
-import SearchAI from '@/components/SearchAI'
+import { Eraser, Frown, Trash2 } from 'lucide-react'
 import { questions } from '@/config/questions'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import { markdownComponents } from '@/components/ui/components/markdown'
 
 export default function SearchBox() {
-  const [query, setQuery] = React.useState<string>('')
+  const [query, setQuery] = useState<string>('')
+  const [displayedQuestions, setDisplayedQuestions] = useState<boolean>(true)
 
-  const { complete, completion, isLoading, error } = useCompletion({
+  const { complete, completion, isLoading, stop, error } = useCompletion({
     api: '/api/vector-search',
   })
   const inputRef = useRef<HTMLInputElement>(null)
@@ -18,20 +21,30 @@ export default function SearchBox() {
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()
     if (!query) return inputRef.current?.focus()
+    setDisplayedQuestions(false)
     void complete(query)
   }
 
   const handleQuestion = (question: string) => {
     if (!question) return inputRef.current?.focus()
     setQuery(question)
+    setDisplayedQuestions(false)
     void complete(question)
+  }
+
+  const handleClean: MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.preventDefault()
+    stop()
+    setDisplayedQuestions(true)
+    setQuery('')
+    inputRef.current?.focus()
   }
 
   return (
     <>
       <div className={'w-full overflow-y-auto'}>
         <form onSubmit={handleSubmit}>
-          <div className="space-y-10 pt-2 text-slate-700 sm:pt-4">
+          <div className="space-y-5 pt-2 text-slate-700 sm:space-y-10 sm:pt-4">
             <div className={'space-y-7'}>
               <div className="mt-2 flex rounded-3xl bg-white py-2 pr-4 shadow-xl shadow-blue-900/5 sm:py-4">
                 <input
@@ -60,7 +73,7 @@ export default function SearchBox() {
                 </button>
               </div>
 
-              {!query && (
+              {(!query || displayedQuestions) && (
                 <div className="text-sm text-gray-600">
                   <div
                     className={
@@ -92,7 +105,7 @@ export default function SearchBox() {
             </div>
 
             {error && (
-              <div className={'space-y-5'}>
+              <div>
                 <div className="flex items-center gap-4">
                   <span className="flex h-8 w-8 items-center justify-center rounded-full bg-red-100 p-2 text-center">
                     <Frown width={18} />
@@ -103,9 +116,28 @@ export default function SearchBox() {
                 </div>
               </div>
             )}
-            {completion && !error ? (
-              <div className={'space-y-5'}>
-                <SearchAI message={completion} />
+            {completion && !error && !displayedQuestions ? (
+              <div>
+                <div className="mb-6 [overflow-anchor:none]">
+                  <div className="mb-6 flex flex-col items-center gap-6 [overflow-anchor:none] sm:flex-row sm:items-start sm:gap-4 sm:gap-6">
+                    <>
+                      <button
+                        onClick={handleClean}
+                        className="flex h-8 w-8 items-center justify-center rounded-full bg-cyan-500 p-2 text-center hover:bg-cyan-400"
+                      >
+                        <Eraser width={18} className="text-white" />
+                      </button>
+                      <ReactMarkdown
+                        remarkPlugins={[remarkGfm]}
+                        components={markdownComponents}
+                        linkTarget="_blank"
+                        className="prose dark:prose-dark max-w-full space-y-4"
+                      >
+                        {completion}
+                      </ReactMarkdown>
+                    </>
+                  </div>
+                </div>
               </div>
             ) : null}
           </div>
