@@ -8,6 +8,6 @@ To address this issue, I embarked on a mission to combine the power of OpenAI AP
 Next AI is your go-to companion for all things Next.JS. You can now ask any questions related to Next.JS with the confidence of the official documentation. To ensure the information is always up to date, a cron job runs daily to refresh the data.
 
 ### ✦ Made with love by Enzo ✦
-I am passionate about Next.JS and excited to share this project with fellow developers. Next AI is a product of love and dedication to the developer community.
+I am passionate about Next.JS and excited to share this project with fellow developers. Next AI is a product of love and dedication to the dev community.
 
-Feel free to explore Next AI and simplify your Next.JS development experience!
+Feel free to explore Next AI and give any suggestions!
