@@ -3,7 +3,7 @@
 import * as React from 'react'
 import { MouseEventHandler, useRef, useState } from 'react'
 import { useCompletion } from 'ai/react'
-import { Eraser, Frown, Trash2 } from 'lucide-react'
+import { Eraser, Frown } from 'lucide-react'
 import { questions } from '@/config/questions'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
