@@ -77,7 +77,7 @@ export const CodeBlock = ({
   // if it's fewer than 70 characters, add a white-space: pre so it doesn't wrap
   const shortCodeBlockClasses =
     typeof codeValue === 'string' && codeValue.length < 70
-      ? 'short-inline-codeblock'
+      ? 'short-inline-codeblock px-1.5 py-0.5 text-stone-800 bg-stone-200 rounded-md'
       : ''
 
   let lang = language
