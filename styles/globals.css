@@ -17,8 +17,26 @@ input:-webkit-autofill {
     -webkit-text-fill-color: inherit;
 }
 
+/* Add whitespace to inline codeblocks*/
 .short-inline-codeblock {
     @media screen and (min-width: 769px) {
         white-space: pre !important;
     }
+}
+
+/* Sets the image in @Next/Image components to respect the height of the content */
+.next-image--dynamic-fill {
+    width: 100%;
+    grid-column: 1 / -1;
+}
+
+.next-image--dynamic-fill > span {
+    position: relative !important;
+}
+
+.next-image--dynamic-fill img {
+    object-fit: contain;
+    width: 100% !important;
+    position: relative !important;
+    height: unset !important;
 }
