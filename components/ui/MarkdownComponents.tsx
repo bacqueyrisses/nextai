@@ -1,6 +1,6 @@
 'use client'
 import * as React from 'react'
-import { CodeBlock } from '@/components/ui/components/CodeBlock/CodeBlock'
+import { CodeBlock } from '@/components/ui/CodeBlock'
 import Image from 'next/image'
 
 export const markdownComponents = {

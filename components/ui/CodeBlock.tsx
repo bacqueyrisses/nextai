@@ -3,7 +3,7 @@ import * as React from 'react'
 import { Children, FC } from 'react'
 import * as CopyToClipboard from 'react-copy-to-clipboard'
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { monokaiCustomTheme } from './CodeBlock.utils'
+import { markdownTheme } from '@/config/markdown-theme'
 
 import js from 'react-syntax-highlighter/dist/cjs/languages/hljs/javascript'
 import ts from 'react-syntax-highlighter/dist/cjs/languages/hljs/typescript'
@@ -52,7 +52,7 @@ export const CodeBlock = ({
   hideLineNumbers = false,
 }: CodeBlockProps) => {
   const isDarkMode = true
-  const monokaiTheme = monokaiCustomTheme(isDarkMode)
+  const theme = markdownTheme(isDarkMode)
 
   const [copied, setCopied] = useState(false)
 
@@ -115,7 +115,7 @@ export const CodeBlock = ({
             language={lang}
             wrapLines={true}
             // @ts-ignore
-            style={monokaiTheme}
+            style={theme}
             className={[
               'code-block !bg-scale-300 !my-0 w-full border px-2 py-4 sm:p-6',
               `${!title ? '!rounded-xl' : '!rounded-b-xl !rounded-t-none'}`,

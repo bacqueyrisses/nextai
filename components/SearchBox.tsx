@@ -7,7 +7,7 @@ import { Frown, RotateCcw } from 'lucide-react'
 import { questions } from '@/config/questions'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import { markdownComponents } from '@/components/ui/components/markdown'
+import { markdownComponents } from '@/components/ui/MarkdownComponents'
 
 export default function SearchBox() {
   const [query, setQuery] = useState<string>('')

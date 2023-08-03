@@ -1,4 +1,4 @@
-export const monokaiCustomTheme = (isDarkMode: boolean) => {
+export const markdownTheme = (isDarkMode: boolean) => {
   return {
     hljs: {
       display: 'block',

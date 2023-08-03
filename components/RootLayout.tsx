@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 import { motion, MotionConfig, useReducedMotion } from 'framer-motion'
 import logo from '@/public/images/logo.webp'
 
-import Container from '@/components/Container'
+import Container from '@/components/ui/Container'
 import GridPattern from '@/components/GridPattern'
 import Image from 'next/image'
 import Footer from '@/components/Footer'
