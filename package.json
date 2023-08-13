@@ -47,7 +47,6 @@
     "class-variance-authority": "^0.4.0",
     "cmdk": "^0.2.0",
     "common-tags": "^1.8.2",
-    "eslint": "8.36.0",
     "github-slugger": "^2.0.0",
     "gpt3-tokenizer": "^1.1.5",
     "lucide": "^0.263.0",

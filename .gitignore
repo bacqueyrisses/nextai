@@ -1,7 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# IDE - VSCode
+# IDE - VSCode / Jetbrains
 .vscode/*
+.idea/*
 
 # dependencies
 /node_modules

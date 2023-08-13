@@ -11,3 +11,4 @@ Next AI is your go-to companion for all things Next.JS. You can now ask any ques
 I am passionate about Next.JS and excited to share this project with fellow developers. Next AI is a product of love and dedication to the dev community.
 
 Feel free to explore NextAI and give any suggestions!
+
