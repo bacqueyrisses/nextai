@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export default function Footer() {
   return (
-    <div className={'mb-6 flex flex-col items-center gap-2 pt-6 text-sm'}>
+    <div className={'mb-6 flex flex-col items-center gap-1 pt-6 text-sm'}>
       <Link href={'https://www.bacqueyrisses.dev/'} target={'_blank'}>
         ✦ Made with love by Enzo ✦
       </Link>
@@ -12,9 +12,9 @@ export default function Footer() {
         target={'_blank'}
       >
         <Image
-          src={'/images/coffee.png'}
-          width={15}
-          height={15}
+          src={'/images/buymeacoffee.png'}
+          width={80}
+          height={10}
           alt={"Enzo Bacqueyrisses' Buy Me a Coffee logo"}
         />
       </Link>
