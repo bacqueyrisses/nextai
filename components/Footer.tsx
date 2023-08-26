@@ -10,6 +10,7 @@ export default function Footer() {
       <Link
         href={'https://www.buymeacoffee.com/bacqueyrisses'}
         target={'_blank'}
+        className={'cursor-pointer'}
       >
         <Image
           src={'/images/buymeacoffee.png'}
