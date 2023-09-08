@@ -58,9 +58,9 @@ export default function SearchBox() {
     <>
       <div className={'w-full overflow-y-auto'}>
         <form onSubmit={handleSubmit}>
-          <div className="space-y-5 pt-2 text-slate-700 sm:space-y-10 sm:pt-4">
+          <div className="mx-4 h-64 min-h-fit space-y-5 pt-2 text-slate-700 sm:h-40 sm:space-y-10 sm:pt-4">
             <div className={'space-y-7'}>
-              <div className="ring-offset-3 group mx-4 mt-2 flex cursor-text overflow-visible rounded-3xl bg-white shadow-xl shadow-blue-900/5 focus-within:ring-2 focus-within:ring-slate-300">
+              <div className="ring-offset-3 group mt-2 flex cursor-text overflow-visible rounded-3xl bg-white shadow-xl shadow-blue-900/5 focus-within:ring-2 focus-within:ring-slate-300">
                 <input
                   placeholder="Ask a question about Next.JS..."
                   name="search"
@@ -73,14 +73,14 @@ export default function SearchBox() {
                 <button type="submit" className="mr-6">
                   <Image
                     src="https://em-content.zobj.net/thumbs/120/apple/354/sparkles_2728.webp"
-                    alt="Crystal Ball"
+                    alt="Sparkles emoji"
                     className={`${isLoading ? 'hidden' : 'inline'}`}
                     width="28"
                     height="28"
                   />
                   <Image
                     src="https://em-content.zobj.net/source/telegram/358/sparkles_2728.webp"
-                    alt="Crystal Ball"
+                    alt="Sparkles telemoji"
                     className={`${isLoading ? 'inline' : 'hidden'}`}
                     width="28"
                     height="28"
@@ -134,7 +134,7 @@ export default function SearchBox() {
             {completion && !error && !displayedQuestions ? (
               <div>
                 <div className="mb-6 [overflow-anchor:none]">
-                  <div className="mb-6 flex flex-col items-center [overflow-anchor:none] sm:flex-row sm:items-start">
+                  <div className="mb-6 flex flex-col items-center gap-6 [overflow-anchor:none] sm:flex-row sm:items-start">
                     <>
                       <button
                         onClick={handleClean}
