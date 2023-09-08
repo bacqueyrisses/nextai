@@ -105,8 +105,8 @@ export default function SearchBox() {
                         <button
                           type="button"
                           className="rounded-full border
-                  border-slate-200 bg-slate-50
-                  px-2.5 py-1
+                  border-slate-200/60 bg-slate-50
+                  px-4 py-1
                   text-center transition-colors hover:bg-slate-100 hover:text-stone-900"
                           onClick={() => handleQuestion(question.description)}
                         >
