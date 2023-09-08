@@ -1,6 +1,5 @@
 import Container from '@/components/ui/Container'
 import SearchBox from '@/components/SearchBox'
-import { CopyToClipboardButton } from '@/components/ui/CopyToClipboard'
 
 function SearchContainer() {
   return (
