@@ -59,7 +59,7 @@ export default function SearchBox() {
         <form onSubmit={handleSubmit}>
           <div className="space-y-5 pt-2 text-slate-700 sm:space-y-10 sm:pt-4">
             <div className={'space-y-7'}>
-              <div className="mt-2 flex rounded-3xl bg-white py-2 pr-4 shadow-xl shadow-blue-900/5 sm:py-4">
+              <div className="ring-offset-3 group mx-4 mt-2 flex cursor-text overflow-visible rounded-3xl bg-white shadow-xl shadow-blue-900/5 focus-within:ring-2 focus-within:ring-slate-300">
                 <input
                   placeholder="Ask a question about Next.JS..."
                   name="search"
@@ -67,9 +67,9 @@ export default function SearchBox() {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   onKeyDown={hideMobileKeyboardOnReturn}
-                  className="flex-auto bg-transparent pl-6 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none"
+                  className="group block h-full w-full bg-transparent py-2 pl-6 pr-4 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none sm:py-4"
                 ></input>
-                <button type="submit" className="">
+                <button type="submit" className="mr-6">
                   <img
                     src="https://em-content.zobj.net/thumbs/120/apple/354/sparkles_2728.webp"
                     alt="Crystal Ball"
