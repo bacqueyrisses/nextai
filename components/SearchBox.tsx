@@ -8,6 +8,7 @@ import { questions } from '@/config/questions'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { markdownComponents } from '@/components/ui/MarkdownComponents'
+import Image from 'next/image'
 
 export default function SearchBox() {
   const [query, setQuery] = useState<string>('')
@@ -70,14 +71,14 @@ export default function SearchBox() {
                   className="group block h-full w-full bg-transparent py-2 pl-6 pr-4 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none sm:py-4"
                 ></input>
                 <button type="submit" className="mr-6">
-                  <img
+                  <Image
                     src="https://em-content.zobj.net/thumbs/120/apple/354/sparkles_2728.webp"
                     alt="Crystal Ball"
                     className={`${isLoading ? 'hidden' : 'inline'}`}
                     width="28"
                     height="28"
                   />
-                  <img
+                  <Image
                     src="https://em-content.zobj.net/source/telegram/358/sparkles_2728.webp"
                     alt="Crystal Ball"
                     className={`${isLoading ? 'inline' : 'hidden'}`}
@@ -133,7 +134,7 @@ export default function SearchBox() {
             {completion && !error && !displayedQuestions ? (
               <div>
                 <div className="mb-6 [overflow-anchor:none]">
-                  <div className="mb-6 flex flex-col items-center gap-4 gap-6 [overflow-anchor:none] sm:flex-row sm:items-start sm:gap-6">
+                  <div className="mb-6 flex flex-col items-center [overflow-anchor:none] sm:flex-row sm:items-start">
                     <>
                       <button
                         onClick={handleClean}

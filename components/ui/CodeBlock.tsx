@@ -1,6 +1,6 @@
 'use client'
 import * as React from 'react'
-import { Children, FC } from 'react'
+import { Children, useState } from 'react'
 import * as CopyToClipboard from 'react-copy-to-clipboard'
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { markdownTheme } from '@/config/markdown-theme'
@@ -14,11 +14,7 @@ import bash from 'react-syntax-highlighter/dist/cjs/languages/hljs/bash'
 import dart from 'react-syntax-highlighter/dist/cjs/languages/hljs/dart'
 import json from 'react-syntax-highlighter/dist/cjs/languages/hljs/json'
 import kotlin from 'react-syntax-highlighter/dist/cjs/languages/hljs/kotlin'
-
-import { useState } from 'react'
 import { Copy, CopyCheck } from 'lucide-react'
-
-// import { useTheme }
 
 export interface CodeBlockProps {
   title?: string

@@ -10,7 +10,6 @@
     "embeddings": "tsx lib/generate-embeddings.ts",
     "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\""
   },
-  "browserslist": "defaults, not ie <= 11",
   "dependencies": {
     "@leafac/rehype-shiki": "^2.2.1",
     "@mdx-js/loader": "^2.3.0",
