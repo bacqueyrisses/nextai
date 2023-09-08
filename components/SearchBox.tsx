@@ -57,8 +57,8 @@ export default function SearchBox() {
   return (
     <>
       <div className={'w-full overflow-y-auto'}>
-        <form onSubmit={handleSubmit} className={'h-64 sm:h-40'}>
-          <div className="mx-4 min-h-full space-y-5 pt-2 text-slate-700 sm:space-y-10 sm:pt-4">
+        <form onSubmit={handleSubmit} className={'min-h-[256px] sm:min-h-[160px]'}>
+          <div className="mx-4 space-y-5 pt-2 text-slate-700 sm:space-y-10 sm:pt-4">
             <div className={'space-y-7'}>
               <div className="ring-offset-3 group mt-2 flex cursor-text overflow-visible rounded-3xl bg-white shadow-xl shadow-blue-900/5 focus-within:ring-2 focus-within:ring-slate-300">
                 <input
