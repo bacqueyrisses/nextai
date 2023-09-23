@@ -18,7 +18,7 @@ import { u } from 'unist-builder'
 import { filter } from 'unist-util-filter'
 import { inspect } from 'util'
 
-export const runtime = 'edge'
+dotenv.config()
 
 type GithubFile = {
   type: 'file' | 'dir'
