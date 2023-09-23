@@ -18,8 +18,6 @@ import { u } from 'unist-builder'
 import { filter } from 'unist-util-filter'
 import { inspect } from 'util'
 
-dotenv.config()
-
 export const runtime = 'edge'
 
 type GithubFile = {
