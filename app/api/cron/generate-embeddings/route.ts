@@ -20,6 +20,8 @@ import { inspect } from 'util'
 
 dotenv.config()
 
+export const runtime = 'edge'
+
 type GithubFile = {
   type: 'file' | 'dir'
   name: string
