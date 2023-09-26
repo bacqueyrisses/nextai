@@ -2,7 +2,7 @@ import '@/styles/globals.css'
 import RootLayout from '@/components/RootLayout'
 
 export const metadata = {
-  title: '✨NextAI',
+  title: '✨ NextAI',
   description: 'The Next.JS AI Doc Search',
 }
 
