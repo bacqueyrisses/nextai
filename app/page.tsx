@@ -40,22 +40,24 @@ export default async function Home() {
   return (
     <>
       <Container className="mt-10 sm:mt-20">
-        <div className="max-w-3xl space-y-3">
-          <div className="inline-flex items-center rounded-lg bg-stone-100 px-3 py-1 text-xs font-medium sm:text-sm">
-            🎉{' '}
-            <div
-              data-orientation="vertical"
-              role="none"
-              className="mx-2 h-4 w-[1px] shrink-0 bg-stone-300"
-            ></div>{' '}
-            <span className="text-neutral-800">
-              Up to date with Next.JS 14.
-            </span>
+        <div className="max-w-3xl space-y-4">
+          <div className={'space-y-3'}>
+            <div className="inline-flex items-center rounded-lg bg-stone-100 px-3 py-1 text-xs font-medium sm:text-sm">
+              🎉{' '}
+              <div
+                data-orientation="vertical"
+                role="none"
+                className="mx-2 h-4 w-[1px] shrink-0 bg-stone-300"
+              ></div>{' '}
+              <span className="text-neutral-800">
+                Up to date with Next.JS 14
+              </span>
+            </div>
+            <h1 className="font-display text-3xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl">
+              The AI-Powered <br />{' '}
+              <span className={'whitespace-nowrap'}>Next.JS Documentation</span>
+            </h1>
           </div>
-          <h1 className="font-display text-3xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl">
-            The AI-Powered <br />{' '}
-            <span className={'whitespace-nowrap'}>Next.JS Documentation</span>
-          </h1>
           <p className="flex flex-col text-lg text-neutral-600 sm:flex-row sm:gap-1 sm:text-xl">
             <span>
               Effortless Next.JS documentation exploration powered by AI.{'  '}
