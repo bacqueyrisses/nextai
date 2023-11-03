@@ -71,7 +71,7 @@ export default function SearchBox() {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   onKeyDown={hideMobileKeyboardOnReturn}
-                  className="group block h-full w-full bg-transparent py-2 pl-6 pr-4 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none sm:py-4"
+                  className="group block h-full w-full bg-transparent py-2 pl-6 pr-4 text-base text-slate-900 placeholder:text-transparent focus:outline-none sm:py-4 sm:placeholder:text-slate-400"
                 ></input>
                 <button type="submit" className="mr-6">
                   <Image
