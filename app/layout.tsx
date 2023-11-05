@@ -3,7 +3,7 @@ import RootLayout from '@/components/RootLayout'
 
 export const metadata = {
   title: 'NextAI',
-  description: 'The Next.JS AI Doc Search',
+  description: 'The Next.js AI Doc Search',
 }
 
 export default function Layout({ children }: { children: React.ReactNode }) {
