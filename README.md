@@ -7,6 +7,9 @@ To address this issue, I embarked on a mission to combine the power of OpenAI AP
 ## ✨ Introducing "Next AI"
 Next AI is your go-to companion for all things Next.js. You can now ask any questions related to Next.js with the confidence of the official documentation. To ensure the information is always up to date, a cron job runs daily to refresh the data.
 
+## 🖲️ Technologies 
+Next.js 13 + Taiwlind + Supabase + OpenAI API 
+
 ### ✦ Made with love by Enzo ✦
 I am passionate about Next.js and excited to share this project with fellow developers. NextAI is a product of love and dedication to the dev community.
 
