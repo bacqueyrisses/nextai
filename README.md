@@ -37,16 +37,10 @@
   <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5.15.0/icons/twitter.svg" style="width: 15px; height: auto; fill: black;" alt="Enzo Bacqueyrisses Twitter Account" />
 </a>&ensp;
 <a href="https://github.com/bacqueyrisses">
-  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5.15.0/icons/github.svg" style="width: 15px; height: auto; fill: black;" alt="Enzo Bacqueyrisses GitHub Account" />
+  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5.15.0/icons/github.svg" style="width: 15px; height: auto; fill: black;  @media (prefers-color-scheme: dark) {
+    fill: white
+  }" alt="Enzo Bacqueyrisses GitHub Account" />
 </a>&ensp;
 <a href="https://www.linkedin.com/in/bacqueyrisses/">
   <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5.15.0/icons/linkedin.svg" style="width: 15px; height: auto; fill: black;" alt="Enzo Bacqueyrisses Linkedin Account" />
 </a>
-
-<style>
-  @media (prefers-color-scheme: dark) {
-    img {
-      filter: invert(1); /* Invert the colors for dark mode */
-    }
-  }
-</style>
