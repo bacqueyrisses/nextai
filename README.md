@@ -21,7 +21,6 @@
 ## Tech Stack
 
 - Next.js [App Router](https://nextjs.org/docs/app)
-- Next.js [Server Actions](https://nextjs.org/docs/app/api-reference/functions/server-actions)
 - [OpenAI](https://openai.com) for text generation
 - [Supabase](https://replicate.com) for data storage
 - Tailwind CSS
