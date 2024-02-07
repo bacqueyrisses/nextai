@@ -13,7 +13,7 @@
 </p>
 
 <a href="https://www.nextai.dev">
-    <img alt="Discover Next.js effortlessly with this AI-powered documentation search." src="https://github.com/bacqueyrisses/postai/assets/96829831/c70b7709-016b-4881-ba2a-a846053f7b1a">
+    <img alt="Discover Next.js effortlessly with this AI-powered documentation search." src="https://github.com/bacqueyrisses/nextai/assets/96829831/01964fa2-6f98-4888-b574-48dd822b04a8">
 </a>
 
 <br/>
