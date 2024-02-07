@@ -1,17 +1,36 @@
-## 🔨 Problem
-If you've ever fallen in love with Next.js like I did last year, you probably understand the excitement it brings to web development. The documentation is comprehensive, informative, and well-written, but I encountered a challenge - there was no quick and easy way to ask questions and get answers with the latest information using AI chats.
+<h1 align="center">✨ NextAI</h1>
 
-## 💡 Solution
-To address this issue, I embarked on a mission to combine the power of OpenAI APIs with the open access to Next.js documentation.
+<p align="center">
+  Discover Next.js effortlessly with this AI-powered documentation search.
+  <br/>
+  Powered by OpenAI and Supabase.
+</p>
 
-## ✨ Introducing "Next AI"
-Next AI is your go-to companion for all things Next.js. You can now ask any questions related to Next.js with the confidence of the official documentation. To ensure the information is always up to date, a cron job runs daily to refresh the data.
+<p align="center">
+  <a href="#tech-stack"><strong>Tech Stack</strong></a> ·
+  <a href="#description"><strong>Description</strong></a> ·
+  <a href="#author"><strong>Author</strong></a>
+</p>
 
-## 🖲️ Technologies 
-Next.js 13 + Tailwind + Supabase + OpenAI API 
+<a href="https://www.nextai.dev">
+    <img alt="Discover Next.js effortlessly with this AI-powered documentation search." src="https://github.com/bacqueyrisses/postai/assets/96829831/c70b7709-016b-4881-ba2a-a846053f7b1a">
+</a>
 
-### ✦ Made with love by Enzo ✦
-I am passionate about Next.js and excited to share this project with fellow developers. NextAI is a product of love and dedication to the dev community.
+<br/>
 
-Feel free to explore NextAI and give any suggestions!
+## Tech Stack
 
+- Next.js [App Router](https://nextjs.org/docs/app)
+- Next.js [Server Actions](https://nextjs.org/docs/app/api-reference/functions/server-actions)
+- [OpenAI](https://openai.com) for text generation
+- [Supabase](https://replicate.com) for data storage
+- Tailwind CSS
+
+## Description
+
+- NextAI is your go-to companion for all things Next.js. You can now ask any questions related to Next.js with the confidence of the official documentation.
+- To ensure the information is always up to date, a cron job runs daily to refresh the data.
+
+## Author
+
+- Enzo Bacqueyrisses&ensp;&ensp;<a href="https://twitter.com/bacqueyrisses"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v5.15.0/icons/twitter.svg" style="width: 15px; height: auto;" alt="Enzo Bacqueyrisses Twitter Account" /></a>&ensp;<a href="https://github.com/bacqueyrisses"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v5.15.0/icons/github.svg"  style="width: 15px; height: auto;" alt="Enzo Bacqueyrisses GitHub Account" /></a>&ensp;<a href="https://www.linkedin.com/in/bacqueyrisses/"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v5.15.0/icons/linkedin.svg"  style="width: 15px; height: auto;" alt="Enzo Bacqueyrisses Linkedin Account" /></a>
