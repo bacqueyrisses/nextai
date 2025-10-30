@@ -234,7 +234,7 @@ export default function SearchBox() {
             </div>
             <div className="mt-8 space-y-4 text-center">
               <h2 className="text-2xl font-semibold text-slate-900">
-                🎉 Accessible on Demand
+                🎉 Available on demand
               </h2>
               <p className="text-base text-slate-600">
                 NextAI is currently available on demand due to API costs.
