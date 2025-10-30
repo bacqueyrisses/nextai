@@ -215,7 +215,7 @@ export default function SearchBox() {
       </div>
 
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-10">
+        <div className="fixed  inset-0 z-50 flex items-center justify-center px-4 py-10">
           <div
             className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm"
             onClick={closeModal}
