@@ -50,7 +50,7 @@ export default async function Home() {
                 className="mx-2 h-4 w-[1px] shrink-0 bg-stone-300"
               ></div>{' '}
               <span className="text-neutral-800">
-                Up to date with Next.JS 14
+                Up to date with Next.JS 15
               </span>
             </div>
             <h1 className="font-display text-3xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl">

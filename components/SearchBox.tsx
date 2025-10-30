@@ -1,49 +1,101 @@
 'use client'
 
 import * as React from 'react'
-import { MouseEventHandler, useRef, useState } from 'react'
+import {
+  MouseEventHandler,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import { useCompletion } from 'ai/react'
-import { Frown, RotateCcw } from 'lucide-react'
+import { RotateCcw, X } from 'lucide-react'
 import { questions } from '@/config/questions'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { markdownComponents } from '@/components/ui/MarkdownComponents'
 import Image from 'next/image'
 
+const CONTACT_EMAIL = 'bacqueyrisses@proton.me'
+const SUBJECT = encodeURIComponent('🎉 Inquery to test NextAI');
+
 export default function SearchBox() {
   const [query, setQuery] = useState<string>('')
   const [displayedQuestions, setDisplayedQuestions] = useState<boolean>(true)
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
 
-  const { complete, completion, isLoading, stop, error } = useCompletion({
+  const { complete, completion, isLoading, stop } = useCompletion({
     api: '/api/vector-search',
   })
   const inputRef = useRef<HTMLInputElement>(null)
+
+  const closeModal = useCallback(() => {
+    setIsModalOpen(false)
+    requestAnimationFrame(() => {
+      inputRef.current?.focus()
+    })
+  }, [inputRef])
+
+  useEffect(() => {
+    if (!isModalOpen) return
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        closeModal()
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [closeModal, isModalOpen])
+
+  useEffect(() => {
+    if (!isModalOpen) return
+
+    const originalOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    return () => {
+      document.body.style.overflow = originalOverflow
+    }
+  }, [isModalOpen])
+
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault()
+    stop()
+    const trimmedQuery = query.trim()
+    if (!trimmedQuery) return inputRef.current?.focus()
+    setQuery(trimmedQuery)
+    setDisplayedQuestions(false)
+    setIsModalOpen(true)
+    void complete(trimmedQuery)
+  }
 
   const hideMobileKeyboardOnReturn = (
     e: React.KeyboardEvent<HTMLInputElement>
   ) => {
     const key = e.key
     if (key === 'Enter' || key === '13') {
-      if (!query) return inputRef.current?.focus()
+      const trimmedQuery = query.trim()
+      if (!trimmedQuery) return inputRef.current?.focus()
       e.currentTarget.blur()
+      stop()
+      setQuery(trimmedQuery)
       setDisplayedQuestions(false)
-      void complete(query)
+      setIsModalOpen(true)
+      void complete(trimmedQuery)
     }
   }
 
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
-    e.preventDefault()
-    stop()
-    if (!query) return inputRef.current?.focus()
-    setDisplayedQuestions(false)
-    void complete(query)
-  }
-
   const handleQuestion = (question: string) => {
-    if (!question) return inputRef.current?.focus()
-    setQuery(question)
+    stop()
+    const trimmedQuestion = question.trim()
+    if (!trimmedQuestion) return inputRef.current?.focus()
+    setQuery(trimmedQuestion)
     setDisplayedQuestions(false)
-    void complete(question)
+    setIsModalOpen(true)
+    void complete(trimmedQuestion)
   }
 
   const handleClean: MouseEventHandler<HTMLButtonElement> = (e) => {
@@ -53,6 +105,8 @@ export default function SearchBox() {
     setQuery('')
     inputRef.current?.focus()
   }
+
+  const trimmedQuery = query.trim()
 
   return (
     <>
@@ -122,19 +176,7 @@ export default function SearchBox() {
               )}
             </div>
 
-            {error && (
-              <div>
-                <div className="flex items-center gap-4">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-red-100 p-2 text-center">
-                    <Frown width={18} />
-                  </span>
-                  <span className="text-slate-700 dark:text-slate-100">
-                    Sad news, the search has failed! Please try again.
-                  </span>
-                </div>
-              </div>
-            )}
-            {completion && !error && !displayedQuestions ? (
+            {completion && !displayedQuestions ? (
               <div>
                 <div className="mb-6 [overflow-anchor:none]">
                   <div className="mb-6 flex flex-col items-center gap-6 [overflow-anchor:none] sm:flex-row sm:items-start">
@@ -171,6 +213,45 @@ export default function SearchBox() {
           </div>
         </form>
       </div>
+
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-10">
+          <div
+            className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm"
+            onClick={closeModal}
+            aria-hidden="true"
+          />
+          <div className="relative z-10 w-full max-w-lg overflow-hidden rounded-3xl bg-white p-8 text-slate-700 shadow-2xl shadow-blue-900/20">
+            <div className="absolute right-4 top-4">
+              <button
+                type="button"
+                onClick={closeModal}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-500"
+              >
+                <X className="h-4 w-4" />
+                <span className="sr-only">Close</span>
+              </button>
+            </div>
+            <div className="mt-8 space-y-4 text-center">
+              <h2 className="text-2xl font-semibold text-slate-900">
+                🎉 Accessible on Demand
+              </h2>
+              <p className="text-base text-slate-600">
+                NextAI is currently available on demand due to API costs.
+                Reach out by email to get access.
+              </p>
+              <a
+
+                href={`mailto:${CONTACT_EMAIL}?subject=${SUBJECT}`}
+                className="inline-flex items-center gap-1.5 rounded-full bg-neutral-950 px-6 py-2 text-sm font-semibold text-white transition hover:bg-neutral-800"
+
+              >
+                {CONTACT_EMAIL}
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   )
 }
